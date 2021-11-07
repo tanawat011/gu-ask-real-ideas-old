@@ -17,6 +17,7 @@ const pathsIgnore = [
 
 module.exports = {
   clearMocks: true,
+  verbose: false,
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
