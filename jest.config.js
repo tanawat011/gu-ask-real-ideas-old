@@ -1,7 +1,27 @@
+const pathsIgnore = [
+  '<rootDir>/.next',
+  '<rootDir>/.storybook',
+  '<rootDir>/coverage',
+  '<rootDir>/dist',
+  '<rootDir>/node_modules/',
+  '<rootDir>/pages/',
+  '<rootDir>/src/configs',
+  '<rootDir>/src/constants',
+  '<rootDir>/src/locales',
+  '<rootDir>/src/libs',
+  '<rootDir>/jest.config.js',
+  '<rootDir>/next.config.js',
+  '<rootDir>/postcss.config.js',
+  '<rootDir>/tailwind.config.js',
+]
+
 module.exports = {
+  clearMocks: true,
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
+    '!**/*.spec.{js,jsx,ts,tsx}',
+    '!**/*.stories.{js,jsx,ts,tsx}',
     '!**/node_modules/**',
   ],
   moduleNameMapper: {
@@ -20,7 +40,9 @@ module.exports = {
     '^@/components/(.*)$': '<rootDir>/components/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
+  coveragePathIgnorePatterns: pathsIgnore,
+  testPathIgnorePatterns: pathsIgnore,
+  modulePathIgnorePatterns: pathsIgnore,
   transform: {
     // Use babel-jest to transpile tests with the next/babel preset
     // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
