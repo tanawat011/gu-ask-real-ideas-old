@@ -52,3 +52,7 @@ In the `nextjs` project we use
 - [Eslint](https://eslint.org/) - formatter
 - [Prettier](https://prettier.io/) - formatter
 - [Husky](https://www.npmjs.com/package/husky) - for git hook
+
+## Future
+
+The project will is boilerplate project
