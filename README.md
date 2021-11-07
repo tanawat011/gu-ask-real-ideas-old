@@ -2,12 +2,20 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, prepare the development server:
 
 ```bash
-npm run dev
+$ npm run prepare
 # or
-yarn dev
+$ yarn prepare
+```
+
+Next step, run the development server:
+
+```bash
+$ npm run dev
+# or
+$ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -32,3 +40,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Description
+
+This project is caused by wanting to learn nextjs, So this project is case study
+In the `nextjs` project we use
+
+- [Typescript](https://www.typescriptlang.org/)
+- [Storybook](https://storybook.js.org/) - learn about Storybook features and API.
+- [Tailwind](https://tailwindcss.com/) - learn about Tailwind features and API.
+- [Eslint](https://eslint.org/) - formatter
+- [Prettier](https://prettier.io/) - formatter
+- [Husky](https://www.npmjs.com/package/husky) - for git hook
