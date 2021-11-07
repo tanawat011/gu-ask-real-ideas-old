@@ -55,6 +55,33 @@ In the `nextjs` project we use
 - [Jest](https://jestjs.io/) - Unit test and UI test
 - [Cypress](https://www.cypress.io/) - Integration test
 
+## Project Ideas
+
+- Counter
+- Calculator
+- BMI Calculator
+- Event Countdown timer
+- Word counter
+- Day of week
+- Height conversion
+- Typing test
+- Rock Paper Scissor game
+- World scrabble game
+- XO game
+- Quiz
+- Contact form
+- TO-DO list
+- Grocery list
+- Budget Tracker
+- Weather Project
+- Analogue Clock
+- Image slider
+- Real time chat app
+- Text to speech
+- Search engine
+- Distance calculator/google API
+- Shopping platform
+
 ## Future
 
 The project will is boilerplate project
