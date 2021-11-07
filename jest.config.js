@@ -2,6 +2,7 @@ const pathsIgnore = [
   '<rootDir>/.next',
   '<rootDir>/.storybook',
   '<rootDir>/coverage',
+  '<rootDir>/cypress',
   '<rootDir>/dist',
   '<rootDir>/node_modules/',
   '<rootDir>/pages/',

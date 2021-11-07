@@ -19,7 +19,7 @@
       "@api/*": ["api/*"],
       "@component/*": ["components/components/*"],
       "@constant/*": ["constants/*"],
-      "@container/*": ["components/containers/*"],
+      "@container/*": ["containers/*"],
       "@element/*": ["components/elements/*"],
       "@hook/*": ["hooks/*"],
       "@layout/*": ["components/layouts/*"],
