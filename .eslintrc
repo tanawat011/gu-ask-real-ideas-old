@@ -5,11 +5,17 @@
   },
   "extends": [
     "plugin:@next/next/recommended",
+    "plugin:jest/recommended",
     "eslint:recommended",
     "next",
     "next/core-web-vitals",
     "prettier"
   ],
+  "settings": {
+    "jest": {
+      "version": 27
+    }
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
