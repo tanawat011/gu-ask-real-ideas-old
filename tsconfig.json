@@ -16,14 +16,14 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@element/*": ["components/elements/*"],
-      "@layout/*": ["components/layouts/*"],
-      "@module/*": ["components/modules/*"],
-      "@template/*": ["components/templates/*"],
+      "@api/*": ["api/*"],
+      "@component/*": ["components/components/*"],
       "@constant/*": ["constants/*"],
+      "@container/*": ["components/containers/*"],
+      "@element/*": ["components/elements/*"],
       "@hook/*": ["hooks/*"],
-      "@util/*": ["utils/*"],
-      "@api/*": ["api/*"]
+      "@layout/*": ["components/layouts/*"],
+      "@util/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

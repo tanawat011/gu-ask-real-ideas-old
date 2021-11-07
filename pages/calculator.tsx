@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 
-import CalculatorPage from '@template/Calculator'
+import CalculatorPage from '@container/Calculator'
 
 const Calculator: NextPage = () => {
   return <CalculatorPage />
