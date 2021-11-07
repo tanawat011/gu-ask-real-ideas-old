@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable jest/expect-expect */
 import HomePage from '../../pages/index'
 
 describe('Navigation', () => {
