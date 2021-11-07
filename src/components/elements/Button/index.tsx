@@ -5,7 +5,7 @@ import Image from 'next/image'
 interface ButtonType {
   title: string
   size: 'small' | 'medium' | 'large'
-  color: 'yellow' | 'red' | 'white' | 'bg'
+  color: 'primary-default' | 'red' | 'white' | 'bg'
   icon?: string
   isDisabled?: boolean
   width?: number
@@ -46,10 +46,10 @@ export const Button: VFC<ButtonType> = ({
   }
 
   const renderColor = (color: string) => {
-    if (color === 'yellow') {
+    if (color === 'primary-default') {
       return clsx(
-        'bg-action-default hover:bg-action-hover active:bg-action-pressed',
-        isDisabled && 'disabled:bg-action-default opacity-40',
+        'bg-primary-default hover:bg-primary-hover active:bg-primary-pressed',
+        isDisabled && 'disabled:bg-primary-default opacity-40',
       )
     }
 
