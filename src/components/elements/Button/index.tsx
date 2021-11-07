@@ -1,4 +1,6 @@
 import clsx from 'clsx'
+import { VFC } from 'react'
+import Image from 'next/image'
 
 interface ButtonType {
   title: string
@@ -9,7 +11,7 @@ interface ButtonType {
   width?: number
 }
 
-export const Button = ({
+export const Button: VFC<ButtonType> = ({
   width,
   title,
   size,
@@ -84,7 +86,7 @@ export const Button = ({
       disabled={isDisabled}
     >
       {icon && (
-        <img className='w-3 h-3 m-1 pointer-events-none' src={icon} alt='' />
+        <Image className='w-3 h-3 m-1 pointer-events-none' src={icon} alt='' />
       )}{' '}
       {title}
     </button>
