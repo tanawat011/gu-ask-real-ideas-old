@@ -52,6 +52,8 @@ In the `nextjs` project we use
 - [Eslint](https://eslint.org/) - formatter
 - [Prettier](https://prettier.io/) - formatter
 - [Husky](https://www.npmjs.com/package/husky) - for git hook
+- [Jest](https://jestjs.io/) - Unit test and UI test
+- [Cypress](https://www.cypress.io/) - Integration test
 
 ## Future
 
