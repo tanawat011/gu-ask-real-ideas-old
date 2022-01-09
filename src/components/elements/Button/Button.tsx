@@ -38,17 +38,18 @@ export const Button: VFC<PropButton> = ({
   }
 
   const renderColor = (color: string) => {
+    const _isDisabled = isDisabled || isLoading
     if (color === 'primary') {
       return clsx(
         'bg-primary-default hover:bg-primary-hover active:bg-primary-pressed',
-        isDisabled && 'disabled:bg-primary-disabled cursor-not-allowed',
+        _isDisabled && 'disabled:bg-primary-disabled cursor-not-allowed',
       )
     }
 
     if (color === 'secondary') {
       return clsx(
         'bg-secondary-default hover:bg-secondary-hover active:bg-secondary-pressed',
-        isDisabled && 'disabled:bg-secondary-disabled cursor-not-allowed',
+        _isDisabled && 'disabled:bg-secondary-disabled cursor-not-allowed',
       )
     }
   }
@@ -65,8 +66,8 @@ export const Button: VFC<PropButton> = ({
 
   const renderLoading = () => {
     return (
-      <div className='pl-2'>
-        <LoadingIcon className='w-6' />
+      <div className='absolute'>
+        <LoadingIcon className='w-6 fill-gray-500 stroke-2' />
       </div>
     )
   }
@@ -76,10 +77,10 @@ export const Button: VFC<PropButton> = ({
       className={`
         ${renderSize(size)}
         ${renderColor(color)}
-        rounded flex justify-center items-center
+        relative rounded flex justify-center items-center
       `}
       style={{ width }}
-      disabled={isDisabled}
+      disabled={isDisabled || isLoading}
     >
       {icon && renderIcon()} {label}
       {isLoading && renderLoading()}
