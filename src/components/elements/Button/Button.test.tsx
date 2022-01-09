@@ -1,4 +1,4 @@
-import {} from '.'
+// import { Button } from './Button'
 
 describe('<Button />', () => {
   it('test', () => {

@@ -1,10 +1,12 @@
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
+const path = require('path')
+
+const toPath = (_path) => path.join(process.cwd(), _path)
 
 module.exports = {
-  "stories": ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
+  'stories': ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  'addons': [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -14,10 +16,74 @@ module.exports = {
       },
     },
   ],
-  webpackFinal: async config => {
-    ;[].push.apply(config.resolve.plugins, [
-      new TsconfigPathsPlugin({ extensions: config.resolve.extensions }),
-    ])
-    return config
+  core: {
+    builder: 'webpack5',
+  },
+  webpackFinal: async (config, { configType }) => {
+    config.module.rules.push({
+      test: /\.scss$/,
+      sideEffects: true,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: [require('tailwindcss'), require('autoprefixer')],
+            },
+          },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
+    })
+
+    // SVG
+    // Needed for SVG importing using svgr
+    const indexOfRuleToRemove = config.module.rules.findIndex((rule) =>
+      rule.test?.toString().includes("svg")
+    )
+
+    config.module.rules.splice(indexOfRuleToRemove, 1, {
+      test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/,
+      loader: require.resolve("file-loader"),
+      options: {
+        name: "static/media/[name].[hash:8].[ext]",
+        esModule: false
+      }
+    })
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            svgo: false
+          }
+        }
+      ]
+    })
+
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@icon': toPath('src/assets/icons'),
+        }
+      }
+    }
   },
 }

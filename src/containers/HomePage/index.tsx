@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Button } from '@element/Button/Button'
 
 const HomePage = () => {
   return (
@@ -9,6 +10,15 @@ const HomePage = () => {
           <a>Go to Calculator</a>
         </Link>
       </h2>
+      <div>
+        <div>
+          <Button label='Go to Calculator' isLoading isDisabled />
+        </div>
+        <div>
+          {' '}
+          <Button label='Go to Calculator' />
+        </div>
+      </div>
     </>
   )
 }

@@ -1,6 +1,14 @@
 {
   "name": "gu-ask-real-ideas",
   "private": true,
+  "keywords": [
+    "react",
+    "nextjs",
+    "tailwind",
+    "storybook",
+    "jest",
+    "typescript"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,15 +22,18 @@
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s public",
     "storybook:build": "build-storybook",
     "prepare": "husky install",
-    "pre-commit": "next lint && yarn test"
+    "pre-commit": "next lint && yarn test",
+    "clean-repo": "rm -rf .next node_modules"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.5",
     "next": "12.0.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.47.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.3",
@@ -30,28 +41,44 @@
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.4.9",
+    "@storybook/manager-webpack5": "^6.4.9",
     "@storybook/react": "^6.3.12",
+    "@svgr/webpack": "^6.1.2",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.4.0",
     "@types/node": "16.11.6",
     "@types/react": "17.0.34",
     "autoprefixer": "^10.4.0",
     "babel-jest": "^27.3.1",
+    "css-loader": "^6.5.1",
     "cypress": "^8.7.0",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "24.7.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "file-loader": "^6.2.0",
     "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.1",
     "postcss": "^8.3.11",
+    "postcss-loader": "^6.2.1",
     "prettier": "^2.4.1",
     "react-test-renderer": "^17.0.2",
+    "sass-loader": "^12.4.0",
     "start-server-and-test": "^1.14.0",
+    "style-loader": "^3.3.1",
     "tailwindcss": "^2.2.19",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "4.4.4"
-  }
+    "typescript": "4.4.4",
+    "webpack": "^5.65.0"
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ]
 }
