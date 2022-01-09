@@ -1,9 +1,9 @@
-/* eslint-disable no-undef */
-/* eslint-disable jest/expect-expect */
-import HomePage from '../../pages/index'
+// import HomePage from '../../pages/index'
 
 describe('Navigation', () => {
   it('should navigate to the calculator page', () => {
+    expect.assertions(1)
+
     // Start from the index page
     cy.visit('http://localhost:3000/')
 

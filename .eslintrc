@@ -4,12 +4,10 @@
     "es2021": true
   },
   "extends": [
-    // "plugin:@next/next/recommended",
     "plugin:react/recommended",
     "plugin:jest/recommended",
     "eslint:recommended",
     "next",
-    // "next/core-web-vitals",
     "prettier"
   ],
   "settings": {
@@ -24,7 +22,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "jest"],
   "ignorePatterns": [
     "/build/*",
     "/coverage/*",

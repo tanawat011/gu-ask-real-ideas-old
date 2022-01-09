@@ -1,9 +1,12 @@
-// import { Button } from './Button'
+import { render } from '@testing-library/react'
+import { Button } from './Button'
 
 describe('<Button />', () => {
   it('test', () => {
     expect.assertions(1)
 
-    expect(true).toBe(true)
+    const button = render(<Button />)
+
+    expect(button).toMatchSnapshot()
   })
 })
