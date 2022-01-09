@@ -28,8 +28,6 @@ module.exports = {
     '!**/node_modules/**',
   ],
   moduleNameMapper: {
-    '^@src/(.*)$': '<rootDir>/src/$1',
-
     // Handle CSS imports (with CSS modules)
     // https://jestjs.io/docs/webpack#mocking-css-modules
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
@@ -42,8 +40,6 @@ module.exports = {
     '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': `<rootDir>/src/__mocks__/fileMock.js`,
 
     // Handle module aliases
-    '^@/components/(.*)$': '<rootDir>/components/$1',
-
     '@icon/(.*)$': '<rootDir>/src/assets/icons/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
