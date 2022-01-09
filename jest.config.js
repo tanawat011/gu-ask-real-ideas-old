@@ -17,6 +17,7 @@ const pathsIgnore = [
 ]
 
 module.exports = {
+  preset: 'ts-jest/presets/js-with-ts',
   clearMocks: true,
   verbose: false,
   collectCoverageFrom: [
@@ -27,6 +28,8 @@ module.exports = {
     '!**/node_modules/**',
   ],
   moduleNameMapper: {
+    '^@src/(.*)$': '<rootDir>/src/$1',
+
     // Handle CSS imports (with CSS modules)
     // https://jestjs.io/docs/webpack#mocking-css-modules
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
@@ -54,4 +57,13 @@ module.exports = {
     '/node_modules/',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/jest.tsconfig.json',
+      diagnostics: false,
+    },
+  },
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  testMatch: ['**/*.(test|spec).(js|jsx|ts|tsx)'],
+  testEnvironment: 'jsdom',
 }
