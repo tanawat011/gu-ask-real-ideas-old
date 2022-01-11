@@ -16,6 +16,10 @@ const pathsIgnore = [
   '<rootDir>/tailwind.config.js',
 ]
 
+console.log('\n')
+console.log(`   ✅ Jest Config \n`)
+console.log(`   ----------- \n`)
+
 module.exports = {
   preset: 'ts-jest/presets/js-with-ts',
   clearMocks: true,

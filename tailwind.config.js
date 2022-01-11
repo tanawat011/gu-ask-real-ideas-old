@@ -1,24 +1,23 @@
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-const purgeEnabled = process.env.NODE_ENV === 'production'
-
 console.log('\n')
-console.log(`   TailwindCSS \n`)
+console.log(`   ✅ TailwindCSS Config \n`)
 console.log(`   ----------- \n`)
-console.log(`   ✅ purgeEnabled=${purgeEnabled}\n`)
+
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
 
 module.exports = {
   mode: 'jit',
-  purge: {
-    enabled: purgeEnabled,
-    mode: 'all',
-    content: [
-      './src/**/*.html',
-      './src/**/*.{js,ts,jsx,tsx}',
-      './pages/**/*.{js,ts,jsx,tsx}',
-    ],
-  },
+  content: [
+    './src/**/*.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+  ],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   corePlugins: {

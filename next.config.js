@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+
+console.log('\n')
+console.log(`   ✅ NextJS Config \n`)
+console.log(`   ----------- \n`)
+
 module.exports = {
   reactStrictMode: true,
   webpack: (config) => {
