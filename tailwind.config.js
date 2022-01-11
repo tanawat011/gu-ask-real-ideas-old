@@ -19,7 +19,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
   presets: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   corePlugins: {
     boxSizing: false,
   },
