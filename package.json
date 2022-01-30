@@ -26,7 +26,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "storybook:build": "build-storybook",
     "prepare": "husky install",
-    "pre-commit": "next lint && yarn test",
+    "pre:commit": "yarn lint && yarn build",
+    "pre:push": "yarn test:cv:msg",
     "clean-repo": "rm -rf .next node_modules"
   },
   "dependencies": {
