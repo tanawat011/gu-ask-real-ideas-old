@@ -1,3 +1,7 @@
+console.log('\n')
+console.log(`   ✅ Jest Config \n`)
+console.log(`   ----------- \n`)
+
 const pathsIgnore = [
   '<rootDir>/.next',
   '<rootDir>/.storybook',
@@ -15,10 +19,6 @@ const pathsIgnore = [
   '<rootDir>/postcss.config.js',
   '<rootDir>/tailwind.config.js',
 ]
-
-console.log('\n')
-console.log(`   ✅ Jest Config \n`)
-console.log(`   ----------- \n`)
 
 module.exports = {
   preset: 'ts-jest/presets/js-with-ts',
