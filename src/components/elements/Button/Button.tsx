@@ -4,8 +4,6 @@ import * as AllIcon from '@heroicons/react/solid'
 
 import LoadingIcon from '@icon/loading3circle.svg'
 
-export const a = '1'
-
 interface PropButton {
   label?: string
   size?: 'small' | 'medium' | 'large'

@@ -82,11 +82,11 @@ const customJestConfig = {
   modulePathIgnorePatterns: pathsIgnore,
   coverageThreshold: {
     global: {
-      statements: 100,
-      branches: 100,
-      functions: 100,
-      lines: 100
-    }
+      statements: 60,
+      branches: 50,
+      functions: 60,
+      lines: 70,
+    },
   },
 }
 

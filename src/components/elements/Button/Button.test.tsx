@@ -2,6 +2,10 @@ import { render } from '@testing-library/react'
 import { Button } from '@element/Button/Button'
 
 describe('<Button />', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   it('should render to match snapshot', () => {
     expect.assertions(1)
 
