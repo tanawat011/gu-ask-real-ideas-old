@@ -1,38 +1,30 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:jest/recommended",
-    "plugin:cypress/recommended",
-    "eslint:recommended",
-    "next",
-    "prettier"
+  "plugins": [
+    "@typescript-eslint",
+    "json",
+    "jest",
+    "prettier" // register this(eslint-plugin-prettier) to eslint.
   ],
-  "settings": {
-    "jest": {
-      "version": 27
-    }
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["prettier", "jest"],
-  "ignorePatterns": [
-    "/build/*",
-    "/coverage/*",
-    "/dist/*",
-    "/libs/*",
-    "node_modules"
+  "extends": [
+    "plugin:prettier/recommended",
+    "plugin:json/recommended",
+    "plugin:jest/all",
+    "plugin:react/recommended",
+    "next/core-web-vitals", 
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended", 
+    "prettier" // Use this(eslint-config-prettier) to turnoff eslint rule that conflict prettier.
   ],
   "rules": {
-    "no-unused-vars": "error",
-    "prettier/prettier": "error"
+    "prefer-const": "error",
+    "prettier/prettier": "error", // Use this(eslint-plugin-prettier) turns on the rule provided by this plugin, which runs Prettier from within ESLint.
+    "arrow-body-style": "off", // Use this to avoid conflict from eslint-plugin-prettier and Eslint
+    "prefer-arrow-callback": "off", // Use this to avoid conflict from eslint-plugin-prettier and Eslint
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "object-curly-newline": "off",
+    "jest/no-hooks": "off",
+    "jest/require-hook": "off",
+    "jest/no-disabled-tests": "off"
   }
 }

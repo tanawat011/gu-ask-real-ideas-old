@@ -2,6 +2,7 @@ import '../styles/globals.scss'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Image from 'next/image'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         >
           Powered by{' '}
           <span>
-            {/* <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} /> */}
+            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
           </span>
         </a>
       </footer>

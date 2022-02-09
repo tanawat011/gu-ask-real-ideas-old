@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
-import { Button } from './Button'
+import { Button } from '@element/Button/Button'
 
 describe('<Button />', () => {
-  it('should be render to natch snapshot', () => {
+  it('should render to match snapshot', () => {
     expect.assertions(1)
 
     const button = render(<Button />)

@@ -2,20 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, prepare the development server:
+First, run the development server:
 
 ```bash
-$ npm run prepare
+npm run dev
 # or
-$ yarn prepare
-```
-
-Next step, run the development server:
-
-```bash
-$ npm run dev
-# or
-$ yarn dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -40,48 +32,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Description
-
-This project is caused by wanting to learn nextjs, So this project is case study
-In the `nextjs` project we use
-
-- [Typescript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/) - learn about Storybook features and API.
-- [Tailwind](https://tailwindcss.com/) - learn about Tailwind features and API.
-- [Eslint](https://eslint.org/) - formatter
-- [Prettier](https://prettier.io/) - formatter
-- [Husky](https://www.npmjs.com/package/husky) - for git hook
-- [Jest](https://jestjs.io/) - Unit test and UI test
-- [Cypress](https://www.cypress.io/) - Integration test
-
-## Project Ideas
-
-- Counter
-- Calculator
-- BMI Calculator
-- Event Countdown timer
-- Word counter
-- Day of week
-- Height conversion
-- Typing test
-- Rock Paper Scissor game
-- World scrabble game
-- XO game
-- Quiz
-- Contact form
-- TO-DO list
-- Grocery list
-- Budget Tracker
-- Weather Project
-- Analogue Clock
-- Image slider
-- Real time chat app
-- Text to speech
-- Search engine
-- Distance calculator/google API
-- Shopping platform
-
-## Future
-
-The project will is boilerplate project

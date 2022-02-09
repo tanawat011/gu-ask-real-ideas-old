@@ -1,14 +1,13 @@
 {
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  "editor.formatOnSave": true,
-  "prettier.enable": true,
-  "eslint.codeActionsOnSave.mode": "all",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
+    "source.fixAll.eslint": true
   },
-  "eslint.format.enable": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.codeAction.showDocumentation": { "enable": true },
-  "eslint.validate": ["javascript", "javascriptreact", "jsx", "typescript", "typescriptreact", "tsx", "json"],
-  "cSpell.words": []
+  // Add those two lines:
+  "editor.formatOnSave": true, // Tell VSCode to format files on save
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Tell VSCode to use Prettier as default file formatter
+  "cSpell.words": [],
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

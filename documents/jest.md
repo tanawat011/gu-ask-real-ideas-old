@@ -1,3 +1,33 @@
+# Jest
+
+## Install Jest
+
+```sh
+yarn add -D jest @testing-library/react @testing-library/jest-dom
+```
+
+## Add Script on package.json
+
+```json
+{
+  ...,
+  "scripts": {
+    ...,
+    "test": "jest -w 1",
+    "test:u": "jest -w 1 -u",
+    "test:cv": "yarn test --coverage",
+    "test:cv:msg": "yarn test:cv --verbose",
+    "test:cv:w": "yarn test:cv --watchAll",
+    "test:cv:msg:w": "yarn test:cv:msg --watchAll",
+    ...
+  },
+  ...
+}
+```
+
+## jest.config.js
+
+```js
 console.log('\n')
 console.log(`   ✅ Jest Config \n`)
 console.log(`   ----------- \n`)
@@ -18,6 +48,9 @@ const aliasMapper = Object.keys(paths).reduce((acc, curr) => {
 }, {})
 
 delete aliasMapper['*$']
+delete aliasMapper['@icon$']
+
+console.log(aliasMapper)
 
 const moduleNameMapper = {
   ...aliasMapper,
@@ -32,26 +65,6 @@ const moduleNameMapper = {
   }, {}),
 }
 
-const pathsIgnore = [
-  '<rootDir>/.husky',
-  '<rootDir>/.next',
-  '<rootDir>/.storybook',
-  '<rootDir>/coverage',
-  '<rootDir>/cypress',
-  '<rootDir>/documents',
-  '<rootDir>/dist',
-  '<rootDir>/node_modules',
-  '<rootDir>/pages',
-  '<rootDir>/src/configs',
-  '<rootDir>/src/constants',
-  '<rootDir>/src/locales',
-  '<rootDir>/src/libs',
-  '<rootDir>/jest.config.js',
-  '<rootDir>/next.config.js',
-  '<rootDir>/postcss.config.js',
-  '<rootDir>/tailwind.config.js',
-]
-
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
   dir: './',
@@ -65,30 +78,9 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
 
-  clearMocks: true,
-  verbose: false,
-  collectCoverage: false,
-  // collectCoverageFrom: [
-  //   'src/**/*.{js,jsx,ts,tsx}',
-  //   '!**/*.d.ts',
-  //   '!**/*.spec.{js,jsx,ts,tsx}',
-  //   '!**/*.stories.{js,jsx,ts,tsx}',
-  //   '!**/node_modules/**',
-  // ],
   moduleNameMapper,
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  coveragePathIgnorePatterns: pathsIgnore,
-  testPathIgnorePatterns: pathsIgnore,
-  modulePathIgnorePatterns: pathsIgnore,
-  coverageThreshold: {
-    global: {
-      statements: 100,
-      branches: 100,
-      functions: 100,
-      lines: 100
-    }
-  },
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 module.exports = createJestConfig(customJestConfig)
+```

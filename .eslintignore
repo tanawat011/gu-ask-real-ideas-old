@@ -1,1 +1,7 @@
-build
+.husky
+.next
+.storybook
+coverage
+document
+node_modules
+storybook-static

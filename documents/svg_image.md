@@ -1,11 +1,16 @@
-/** @type {import('next').NextConfig} */
+# SVG IMAGE
 
-console.log('\n')
-console.log(`   ✅ NextJS Config \n`)
-console.log(`   ----------- \n`)
+## Install SVG IMAGE Webpack
 
+```sh
+yarn add -D @svgr/webpack webpack
+```
+
+## next.config.js
+
+```js
 const nextConfig = {
-  reactStrictMode: true,
+  ...,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -14,6 +19,8 @@ const nextConfig = {
 
     return config
   },
+  ...,
 }
 
 module.exports = nextConfig
+```

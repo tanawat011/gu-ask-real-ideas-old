@@ -15,10 +15,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["cypress"],
     "paths": {
       "@api/*": ["api/*"],
-      "@component/*": ["components/components/*"],
+      "@component/*": ["components/*"],
       "@constant/*": ["constants/*"],
       "@container/*": ["containers/*"],
       "@element/*": ["components/elements/*"],
@@ -28,6 +27,12 @@
       "@util/*": ["utils/*"]
     }
   },
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "pages/**/*.ts",
+    "pages/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }

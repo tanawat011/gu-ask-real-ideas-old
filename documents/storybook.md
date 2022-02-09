@@ -1,3 +1,29 @@
+# Storybook
+
+## Install Storybook
+
+```sh
+yarn add -D @storybook/react @storybook/addon-actions @storybook/addon-essentials @storybook/addon-links @storybook/addon-postcss @storybook/builder-webpack5 @storybook/manager-webpack5 file-loader
+```
+
+## Add Script on package.json
+
+```json
+{
+  ...,
+  "scripts": {
+    ...,
+    "storybook": "start-storybook -p 6006 -s public",
+    "storybook:build": "build-storybook",
+    ...
+  },
+  ...
+}
+```
+
+## .storybook/main.js
+
+```js
 console.log('\n')
 console.log(`   ✅ Storybook Config \n`)
 console.log(`   ----------- \n`)
@@ -102,3 +128,22 @@ module.exports = {
     }
   },
 }
+```
+
+## .storybook/preview.js
+
+```js
+// Import the global style enabling tailwind classes
+import '../styles/globals.scss'
+
+// or global addParameters
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+}
+```
