@@ -3,14 +3,13 @@
 ## Install Prettier and ESLint
 
 ```sh
-yarn add -D eslint prettier eslint-config-next eslint-config-prettier "@typescript-eslint/eslint-plugin
+yarn add -D eslint prettier eslint-config-next eslint-config-prettier @typescript-eslint/eslint-plugin
 ```
 
 ## Add Script on package.json
 
 ```json
 {
-  ...,
   "scripts": {
     ...,
     
@@ -55,15 +54,8 @@ yarn add -D eslint prettier eslint-config-next eslint-config-prettier "@typescri
 ```json
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true, // Tell VSCode to auto fix our code with eslint
   },
-  // Add those two lines:
   "editor.formatOnSave": true, // Tell VSCode to format files on save
-  "editor.defaultFormatter": "esbenp.prettier-vscode", // Tell VSCode to use Prettier as default file formatter
-  "cSpell.words": [],
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
 }
 ```

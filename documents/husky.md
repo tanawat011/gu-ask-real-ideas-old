@@ -10,16 +10,12 @@ yarn add -D husky
 
 ```json
 {
-  ...,
   "scripts": {
-    ...,
     "prepare": "husky install",
     "solve:pre:commit:not-exec": "chmod ug+x .husky/*",
     "pre:commit": "yarn lint && yarn build",
-    "pre:push": "yarn test:cv:msg",
-    ...
-  },
-  ...
+    "pre:push": "yarn test:cv:msg"
+  }
 }
 ```
 

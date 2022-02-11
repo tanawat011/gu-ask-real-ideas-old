@@ -10,18 +10,14 @@ yarn add -D jest @testing-library/react @testing-library/jest-dom
 
 ```json
 {
-  ...,
   "scripts": {
-    ...,
     "test": "jest -w 1",
     "test:u": "jest -w 1 -u",
     "test:cv": "yarn test --coverage",
     "test:cv:msg": "yarn test:cv --verbose",
     "test:cv:w": "yarn test:cv --watchAll",
-    "test:cv:msg:w": "yarn test:cv:msg --watchAll",
-    ...
-  },
-  ...
+    "test:cv:msg:w": "yarn test:cv:msg --watchAll"
+  }
 }
 ```
 

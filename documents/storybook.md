@@ -10,14 +10,10 @@ yarn add -D @storybook/react @storybook/addon-actions @storybook/addon-essential
 
 ```json
 {
-  ...,
   "scripts": {
-    ...,
     "storybook": "start-storybook -p 6006 -s public",
-    "storybook:build": "build-storybook",
-    ...
-  },
-  ...
+    "storybook:build": "build-storybook"
+  }
 }
 ```
 

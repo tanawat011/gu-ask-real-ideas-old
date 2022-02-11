@@ -3,7 +3,8 @@
     "@typescript-eslint",
     "json",
     "jest",
-    "prettier" // register this(eslint-plugin-prettier) to eslint.
+    "prettier",
+    "react"
   ],
   "extends": [
     "plugin:prettier/recommended",
@@ -13,13 +14,13 @@
     "next/core-web-vitals", 
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended", 
-    "prettier" // Use this(eslint-config-prettier) to turnoff eslint rule that conflict prettier.
+    "prettier"
   ],
   "rules": {
     "prefer-const": "error",
-    "prettier/prettier": "error", // Use this(eslint-plugin-prettier) turns on the rule provided by this plugin, which runs Prettier from within ESLint.
-    "arrow-body-style": "off", // Use this to avoid conflict from eslint-plugin-prettier and Eslint
-    "prefer-arrow-callback": "off", // Use this to avoid conflict from eslint-plugin-prettier and Eslint
+    "prettier/prettier": "error",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "off",
     "object-curly-newline": "off",
