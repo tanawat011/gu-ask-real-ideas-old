@@ -1,5 +1,9 @@
 # Stylelint
 
+```text
+Must be use `yarn add -D postcss`
+```
+
 ## Install Stylelint
 
 ```sh
