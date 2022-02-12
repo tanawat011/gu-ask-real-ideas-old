@@ -7,17 +7,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode", // Tell VSCode to use Prettier as default file formatter
   "cSpell.words": [],
 
-  // Typescript
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
   // Stylelint with Prettier
-  "[scss]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,

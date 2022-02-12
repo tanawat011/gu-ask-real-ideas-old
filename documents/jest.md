@@ -3,7 +3,9 @@
 ## Install Jest
 
 ```sh
-yarn add -D jest @testing-library/react @testing-library/jest-dom
+yarn add -D jest \
+  @testing-library/react \
+  @testing-library/jest-dom
 ```
 
 ## Add Script on package.json

@@ -3,7 +3,8 @@
 ## Install SVG IMAGE Webpack
 
 ```sh
-yarn add -D @svgr/webpack webpack
+yarn add -D @svgr/webpack \
+  webpack
 ```
 
 ## next.config.js

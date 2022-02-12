@@ -3,7 +3,12 @@
 ## Install TailwindCSS
 
 ```sh
-yarn add -D sass tailwindcss postcss postcss-loader sass-loader autoprefixer
+yarn add -D sass \
+  tailwindcss \
+  postcss \
+  postcss-loader \
+  sass-loader \
+  autoprefixer
 ```
 
 ### postcss.config.js

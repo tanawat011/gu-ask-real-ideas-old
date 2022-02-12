@@ -3,7 +3,14 @@
 ## Install Storybook
 
 ```sh
-yarn add -D @storybook/react @storybook/addon-actions @storybook/addon-essentials @storybook/addon-links @storybook/addon-postcss @storybook/builder-webpack5 @storybook/manager-webpack5 file-loader
+yarn add -D @storybook/react \
+  @storybook/addon-actions \
+  @storybook/addon-essentials \
+  @storybook/addon-links \
+  @storybook/addon-postcss \
+  @storybook/builder-webpack5 \
+  @storybook/manager-webpack5 \
+  file-loader
 ```
 
 ## Add Script on package.json
