@@ -8,6 +8,7 @@ yarn add -D stylelint \
   stylelint-config-prettier-scss \
   stylelint-config-standard \
   stylelint-config-standard-scss \
+  stylelint-prettier \
   stylelint-scss
 ```
 
@@ -30,7 +31,7 @@ yarn add -D stylelint \
 ```json
 {
   "scripts": {
-    "lint:style": "yarn stylelint styles **/*.scss",
+    "lint:style": "yarn stylelint **/*.scss",
     "lint:style:fix": "yarn lint:style --fix"
   }
 }
@@ -41,13 +42,15 @@ yarn add -D stylelint \
 ```json
 {
   "plugins": [
-    "stylelint-scss"
+    "stylelint-scss",
+    "stylelint-prettier"
   ],
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-prettier",
     "stylelint-config-standard-scss",
-    "stylelint-config-prettier-scss"
+    "stylelint-config-prettier-scss",
+    "stylelint-prettier/recommended"
   ],
   "rules": {}
 }
