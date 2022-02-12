@@ -56,6 +56,7 @@ yarn add -D stylelint \
     "stylelint-config-prettier-scss",
     "stylelint-prettier/recommended"
   ],
+  "ignoreFiles": [],
   "rules": {}
 }
 ```

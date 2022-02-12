@@ -10,6 +10,16 @@
     "stylelint-config-prettier-scss",
     "stylelint-prettier/recommended"
   ],
+  "ignoreFiles": [
+    ".husky",
+    ".next",
+    ".storybook",
+    ".vscode",
+    "coverage",
+    "documents",
+    "node_modules",
+    "public"
+  ],
   "rules": {
     "prettier/prettier": true,
     "at-rule-no-unknown": [
