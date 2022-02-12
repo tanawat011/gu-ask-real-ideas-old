@@ -20,7 +20,7 @@
     "test:cv:msg:w": "yarn test:cv:msg --watchAll",
     "prepare": "husky install",
     "solve:pre:commit:not-exec": "chmod ug+x .husky/*",
-    "pre:commit": "yarn lint && yarn build",
+    "pre:commit": "yarn lint && yarn lint:ts && yarn lint:style && yarn build",
     "pre:push": "yarn test:cv:msg"
   },
   "dependencies": {
