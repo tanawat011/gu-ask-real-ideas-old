@@ -80,7 +80,7 @@ exports[`<Loader /> should render to match snapshot with default style 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="loader border-4 border-t-4 border-t-gray-400"
+      class="loader border-transparent border-4 border-t-4 border-t-gray-400"
     />
   </div>
 </DocumentFragment>
@@ -90,7 +90,7 @@ exports[`<Loader /> should render to match snapshot with default style 2 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="loader border-4 border-t-4 border-t-gray-400"
+      class="loader border-transparent border-4 border-t-4 border-t-gray-400"
     />
   </div>
 </DocumentFragment>
@@ -100,7 +100,7 @@ exports[`<Loader /> should render to match snapshot with second style 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="loader-second border-4 border-t-4 border-b-4 border-t-gray-400 border-t-gray-400 border-b-gray-400"
+      class="loader-second border-transparent border-4 border-t-4 border-b-4 border-t-gray-400 border-t-gray-400 border-b-gray-400"
     />
   </div>
 </DocumentFragment>

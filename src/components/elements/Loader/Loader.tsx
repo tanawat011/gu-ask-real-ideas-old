@@ -132,7 +132,7 @@ export const Loader: React.FC<PropsLoader> = (props) => {
         return (
           <div
             className={clsx(
-              'loader-second border-4 border-t-4 border-b-4',
+              'loader-second border-transparent border-4 border-t-4 border-b-4',
               renderColor(LOADER_STYLE.DEFAULT, color),
               classColor,
             )}
@@ -148,7 +148,12 @@ export const Loader: React.FC<PropsLoader> = (props) => {
       case LOADER_STYLE.DEFAULT:
       default:
         return (
-          <div className={clsx('loader border-4 border-t-4', classColor)} />
+          <div
+            className={clsx(
+              'loader border-transparent border-4 border-t-4',
+              classColor,
+            )}
+          />
         )
     }
   }
