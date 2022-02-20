@@ -4,7 +4,7 @@ exports[`<Loader /> should render to match snapshot with 3floor style 1`] = `
 <DocumentFragment>
   <div>
     <svg
-      class="loader-3floor fill-gray-500"
+      class="loader-3floor fill-gray-400"
       enable-background="new 0 0 100 100"
       id="L7"
       version="1.1"
@@ -60,7 +60,7 @@ exports[`<Loader /> should render to match snapshot with dash style 1`] = `
 <DocumentFragment>
   <div>
     <svg
-      class="loader-dash stroke-gray-500"
+      class="loader-dash stroke-gray-400"
       viewBox="0 0 50 50"
     >
       <circle
@@ -80,7 +80,7 @@ exports[`<Loader /> should render to match snapshot with default style 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="loader border-4 border-t-4 border-t-gray-500"
+      class="loader border-4 border-t-4 border-t-gray-400"
     />
   </div>
 </DocumentFragment>
@@ -90,7 +90,7 @@ exports[`<Loader /> should render to match snapshot with default style 2 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="loader border-4 border-t-4 border-t-gray-500"
+      class="loader border-4 border-t-4 border-t-gray-400"
     />
   </div>
 </DocumentFragment>
@@ -100,7 +100,7 @@ exports[`<Loader /> should render to match snapshot with second style 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="loader-second border-4 border-t-4 border-b-4 border-t-gray-500 border-b-gray-500"
+      class="loader-second border-4 border-t-4 border-b-4 border-t-gray-400 border-t-gray-400 border-b-gray-400"
     />
   </div>
 </DocumentFragment>

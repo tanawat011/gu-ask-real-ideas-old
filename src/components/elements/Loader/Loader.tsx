@@ -19,7 +19,7 @@ const LoaderDashStyle = (classColor: string) => (
   </svg>
 )
 
-const Loader3FloorStyle = (classColor: string) => (
+const Loader3FloorStyle = (classColor = 'fill-blue-400') => (
   <svg
     className={clsx('loader-3floor', classColor)}
     version='1.1'
@@ -79,25 +79,51 @@ export const Loader: React.FC<PropsLoader> = (props) => {
     props
 
   const renderColor = (loaderStyle: LOADER_STYLE, color: LOADER_COLOR) => {
-    let prefix = 'border-t'
+    if (loaderStyle === LOADER_STYLE.TWO_PIPE) {
+      switch (color) {
+        case LOADER_COLOR.SKY:
+          return 'border-t-blue-400 border-b-blue-400'
+        case LOADER_COLOR.WHITE:
+          return 'border-t-white border-b-white'
 
-    switch (loaderStyle) {
-      case LOADER_STYLE.DASH:
-        prefix = 'stroke'
-        break
-      case LOADER_STYLE.TWO_PIPE:
-        prefix = 'border-b'
-        break
-      case LOADER_STYLE.THREE_FLOOR:
-        prefix = 'fill'
-        break
+        default:
+          return 'border-t-gray-400 border-b-gray-400'
+      }
     }
 
-    if (color === LOADER_COLOR.SKY) {
-      return prefix + '-blue-400'
+    if (loaderStyle === LOADER_STYLE.THREE_FLOOR) {
+      switch (color) {
+        case LOADER_COLOR.SKY:
+          return 'fill-blue-400'
+        case LOADER_COLOR.WHITE:
+          return 'fill-white'
+
+        default:
+          return 'fill-gray-400'
+      }
     }
 
-    return prefix + '-gray-500'
+    if (loaderStyle === LOADER_STYLE.DASH) {
+      switch (color) {
+        case LOADER_COLOR.SKY:
+          return 'stroke-blue-400'
+        case LOADER_COLOR.WHITE:
+          return 'stroke-white'
+
+        default:
+          return 'stroke-gray-400'
+      }
+    }
+
+    switch (color) {
+      case LOADER_COLOR.SKY:
+        return 'border-t-blue-400'
+      case LOADER_COLOR.WHITE:
+        return 'border-t-white'
+
+      default:
+        return 'border-t-gray-400'
+    }
   }
 
   const renderLoader = (classColor: string) => {

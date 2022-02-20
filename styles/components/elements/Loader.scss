@@ -4,9 +4,10 @@
 .loader, %loader {
   width: 24px;
   height: 24px;
-  border: 4px solid #f3f3f3; /* Background */
+
+  // border: 4px solid #f3f3f3; /* Background */
   border-radius: 50%; /* Rounded borders */
-  border-top: 4px solid #888; /* Loader */
+  // border-top: 4px solid #888; /* Loader */
   -webkit-animation: spin 1s linear infinite; /* Safari */
   animation: spin 1s linear infinite; /* spin | speed | spin style | time for spin */
   z-index: 2;
@@ -14,7 +15,7 @@
   &-second {  
     @extend %loader;
 
-    border-bottom: 4px solid #888;
+    // border-bottom: 4px solid #888;
   }
 }
 
@@ -35,7 +36,8 @@
 .loader-dash {
   width: 24px;
   height: 24px;
-  stroke: #888;
+
+  // stroke: #888;
   animation: rotate 2s linear infinite;
   z-index: 2;
   
@@ -74,5 +76,6 @@
 .loader-3floor {
   width: 24px;
   height: 24px;
-  fill: #888;
+
+  // fill: #888;
 }

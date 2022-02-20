@@ -1,6 +1,7 @@
 export enum LOADER_COLOR {
   DEFAULT = 'default',
   SKY = 'sky',
+  WHITE = 'white',
 }
 
 export enum LOADER_STYLE {
