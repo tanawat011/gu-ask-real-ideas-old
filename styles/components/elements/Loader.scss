@@ -6,7 +6,7 @@
   height: 24px;
   border: 4px solid #f3f3f3; /* Background */
   border-radius: 50%; /* Rounded borders */
-  border-top: 4px solid #3498db; /* Loader */
+  border-top: 4px solid #888; /* Loader */
   -webkit-animation: spin 1s linear infinite; /* Safari */
   animation: spin 1s linear infinite; /* spin | speed | spin style | time for spin */
   z-index: 2;
@@ -14,7 +14,7 @@
   &-second {  
     @extend %loader;
 
-    border-bottom: 4px solid #3498db;
+    border-bottom: 4px solid #888;
   }
 }
 
@@ -35,11 +35,11 @@
 .loader-dash {
   width: 24px;
   height: 24px;
+  stroke: #888;
   animation: rotate 2s linear infinite;
   z-index: 2;
   
   & .path {
-    stroke: #3498db;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }
@@ -74,5 +74,5 @@
 .loader-3floor {
   width: 24px;
   height: 24px;
-  fill: #3498db;
+  fill: #888;
 }

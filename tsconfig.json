@@ -18,9 +18,11 @@
     "paths": {
       "@api/*": ["api/*"],
       "@component/*": ["components/*"],
+      "@constants": ["constants"],
       "@constant/*": ["constants/*"],
       "@container/*": ["containers/*"],
       "@element/*": ["components/elements/*"],
+      "@hooks": ["hooks"],
       "@hook/*": ["hooks/*"],
       "@icon/*": ["assets/icons/*"],
       "@layout/*": ["components/layouts/*"],

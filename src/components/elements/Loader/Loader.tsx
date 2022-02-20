@@ -1,9 +1,13 @@
+import { LOADER_COLOR, LOADER_STYLE } from '@constants'
+import clsx from 'clsx'
+
 type PropsLoader = {
-  loaderStyle?: 'default' | '2pipe' | 'dash' | '3floor'
+  color?: LOADER_COLOR
+  loaderStyle?: LOADER_STYLE
 }
 
-const LoaderDashStyle = (
-  <svg className='loader-dash' viewBox='0 0 50 50'>
+const LoaderDashStyle = (classColor: string) => (
+  <svg className={clsx('loader-dash', classColor)} viewBox='0 0 50 50'>
     <circle
       className='path'
       cx='25'
@@ -15,9 +19,9 @@ const LoaderDashStyle = (
   </svg>
 )
 
-const Loader3FloorStyle = (
+const Loader3FloorStyle = (classColor: string) => (
   <svg
-    className='loader-3floor'
+    className={clsx('loader-3floor', classColor)}
     version='1.1'
     id='L7'
     x='0px'
@@ -70,23 +74,60 @@ L82,35.7z'
   </svg>
 )
 
-export const Loader: React.FC<PropsLoader> = ({ loaderStyle }) => {
-  const render = () => {
+export const Loader: React.FC<PropsLoader> = (props) => {
+  const { loaderStyle = LOADER_STYLE.DEFAULT, color = LOADER_COLOR.DEFAULT } =
+    props
+
+  const renderColor = (loaderStyle: LOADER_STYLE, color: LOADER_COLOR) => {
+    let prefix = 'border-t'
+
     switch (loaderStyle) {
-      case '2pipe':
-        return <div className='loader-second' />
+      case LOADER_STYLE.DASH:
+        prefix = 'stroke'
+        break
+      case LOADER_STYLE.TWO_PIPE:
+        prefix = 'border-b'
+        break
+      case LOADER_STYLE.THREE_FLOOR:
+        prefix = 'fill'
+        break
+    }
 
-      case 'dash':
-        return LoaderDashStyle
+    if (color === LOADER_COLOR.SKY) {
+      return prefix + '-blue-400'
+    }
 
-      case '3floor':
-        return Loader3FloorStyle
+    return prefix + '-gray-500'
+  }
 
-      case 'default':
+  const renderLoader = (classColor: string) => {
+    switch (loaderStyle) {
+      case LOADER_STYLE.TWO_PIPE:
+        return (
+          <div
+            className={clsx(
+              'loader-second border-4 border-t-4 border-b-4',
+              renderColor(LOADER_STYLE.DEFAULT, color),
+              classColor,
+            )}
+          />
+        )
+
+      case LOADER_STYLE.DASH:
+        return LoaderDashStyle(classColor)
+
+      case LOADER_STYLE.THREE_FLOOR:
+        return Loader3FloorStyle(classColor)
+
+      case LOADER_STYLE.DEFAULT:
       default:
-        return <div className='loader' />
+        return (
+          <div className={clsx('loader border-4 border-t-4', classColor)} />
+        )
     }
   }
 
-  return render()
+  const _color = renderColor(loaderStyle, color)
+
+  return <div>{renderLoader(_color)}</div>
 }

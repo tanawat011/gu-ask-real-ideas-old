@@ -5,68 +5,51 @@ import { Button } from '@element/Button'
 export default {
   title: 'Button',
   component: Button,
-  argTypes: {
-    label: {
-      name: 'Label',
-      table: {
-        category: 'Text',
+  parameters: {
+    docs: {
+      description: {
+        component: 'Button description',
       },
-    },
-    size: {
-      name: 'Size',
-      table: {
-        category: 'Size',
-      },
-    },
-    color: {
-      name: 'Color',
-      table: {
-        category: 'Colors',
-      },
-    },
-    isLoading: {
-      name: 'Set loading',
-      table: {
-        category: 'Setting',
-      },
-    },
-    isDisabled: {
-      name: 'Set disabled',
-      table: {
-        category: 'Setting',
-      },
+      page: null,
     },
   },
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: ComponentStory<typeof Button> = (args) => (
+  <Button label='Button' size='medium' {...args} />
+)
 
-export const Primary = Template.bind({})
+export const DefaultButton = Template.bind({})
+DefaultButton.story = {
+  name: 'Default',
+}
 
-Primary.args = {
-  label: 'Button',
-  size: 'medium',
+export const PrimaryButton = Template.bind({})
+PrimaryButton.story = {
+  name: 'Primary',
+}
+PrimaryButton.args = {
   color: 'primary',
 }
-Primary.parameters = {
+PrimaryButton.parameters = {
   docs: {
     description: {
-      component: 'Button primary',
+      story: 'Primary button description',
     },
   },
 }
 
-export const Secondary = Template.bind({})
-
-Secondary.args = {
-  label: 'Button',
-  size: 'medium',
+export const SecondaryButton = Template.bind({})
+SecondaryButton.story = {
+  name: 'Secondary',
+}
+SecondaryButton.args = {
   color: 'secondary',
 }
-Secondary.parameters = {
+SecondaryButton.parameters = {
   docs: {
     description: {
-      component: 'Button secondary',
+      story: 'Secondary button description',
     },
   },
 }

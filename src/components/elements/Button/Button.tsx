@@ -2,16 +2,18 @@ import clsx from 'clsx'
 import { VFC } from 'react'
 import * as AllIcon from '@heroicons/react/solid'
 
-import LoadingIcon from '@icon/loading3circle.svg'
+import { LOADER_STYLE } from '@constants'
+import { Loader } from '@element/Loader'
 
 interface PropButton {
+  width?: number
   label?: string
   size?: 'small' | 'medium' | 'large'
   color?: 'primary' | 'secondary'
   icon?: string
   isDisabled?: boolean
   isLoading?: boolean
-  width?: number
+  onClick?: () => void
 }
 
 export const Button: VFC<PropButton> = ({
@@ -22,6 +24,7 @@ export const Button: VFC<PropButton> = ({
   icon,
   isDisabled = false,
   isLoading = false,
+  onClick,
 }) => {
   const renderSize = (size: string) => {
     if (size === 'small') {
@@ -68,7 +71,7 @@ export const Button: VFC<PropButton> = ({
   const renderLoading = () => {
     return (
       <div className='absolute'>
-        <LoadingIcon className='w-6 fill-gray-500 stroke-2' />
+        <Loader loaderStyle={LOADER_STYLE.THREE_FLOOR} />
       </div>
     )
   }
@@ -78,10 +81,11 @@ export const Button: VFC<PropButton> = ({
       className={`
         ${renderSize(size)}
         ${renderColor(color)}
-        relative rounded flex justify-center items-center
+        relative rounded-md flex justify-center items-center
       `}
       style={{ width }}
       disabled={isDisabled || isLoading}
+      onClick={onClick}
     >
       {icon && renderIcon()} {label}
       {isLoading && renderLoading()}

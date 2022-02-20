@@ -4,12 +4,20 @@
 
 ```sh
 yarn add -D @storybook/react \
+  @storybook/addon-a11y \
   @storybook/addon-actions \
+  @storybook/addon-docs \
   @storybook/addon-essentials \
   @storybook/addon-links \
   @storybook/addon-postcss \
+  @storybook/addon-storysource \
+  @storybook/addons \
   @storybook/builder-webpack5 \
   @storybook/manager-webpack5 \
+  @storybook/react \
+  @storybook/theming \
+  storybook-color-picker \
+  storybook-tailwind-dark-mode \
   file-loader
 ```
 
@@ -48,6 +56,18 @@ delete aliasMapper['@icon$']
 module.exports = {
   'stories': ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   'addons': [
+    'storybook-tailwind-dark-mode',
+    'storybook-color-picker',
+    '@storybook/addon-a11y',
+    '@storybook/addon-storysource',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false
+        },
+      },
+    },
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     {
@@ -133,9 +153,23 @@ module.exports = {
 }
 ```
 
+## .storybook/manager.js
+
+```js
+import { addons } from '@storybook/addons'
+import { themes } from '@storybook/theming'
+
+addons.setConfig({
+  theme: themes.dark,
+})
+```
+
 ## .storybook/preview.js
 
 ```js
+import { addDecorator } from '@storybook/react'
+import { themes } from '@storybook/theming'
+
 // Import the global style enabling tailwind classes
 import '../styles/globals.scss'
 
@@ -147,6 +181,9 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  docs: {
+    theme: themes.dark,
   },
 }
 ```

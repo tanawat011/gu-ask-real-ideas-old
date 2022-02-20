@@ -9,7 +9,7 @@ Object {
         class="
         text-white font-bold py-2 px-4 text-base
         bg-primary-default hover:bg-primary-hover active:bg-primary-pressed
-        relative rounded flex justify-center items-center
+        relative rounded-md flex justify-center items-center
       "
       >
          
@@ -21,7 +21,7 @@ Object {
       class="
         text-white font-bold py-2 px-4 text-base
         bg-primary-default hover:bg-primary-hover active:bg-primary-pressed
-        relative rounded flex justify-center items-center
+        relative rounded-md flex justify-center items-center
       "
     >
        

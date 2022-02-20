@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
+import { LOADER_STYLE } from '@constants'
 import { Loader } from '@element/Loader'
 
 const ComponentAllLoaders: React.FC = () => (
@@ -9,13 +10,13 @@ const ComponentAllLoaders: React.FC = () => (
       Default
     </div>
     <div className='flex flex-col justify-center items-center h-40 w-40 m-4'>
-      <Loader loaderStyle='2pipe' />2 Pipe
+      <Loader loaderStyle={LOADER_STYLE.TWO_PIPE} />2 Pipe
     </div>
     <div className='flex flex-col justify-center items-center h-40 w-40 m-4'>
-      <Loader loaderStyle='3floor' />3 Floor
+      <Loader loaderStyle={LOADER_STYLE.THREE_FLOOR} />3 Floor
     </div>
     <div className='flex flex-col justify-center items-center h-40 w-40 m-4'>
-      <Loader loaderStyle='dash' />
+      <Loader loaderStyle={LOADER_STYLE.DASH} />
       Dash
     </div>
   </div>

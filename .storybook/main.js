@@ -19,6 +19,18 @@ delete aliasMapper['@icon$']
 module.exports = {
   'stories': ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   'addons': [
+    'storybook-tailwind-dark-mode',
+    'storybook-color-picker',
+    '@storybook/addon-a11y',
+    '@storybook/addon-storysource',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false
+        },
+      },
+    },
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     {

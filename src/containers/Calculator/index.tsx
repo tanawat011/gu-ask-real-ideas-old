@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const CalculatorPage = () => {
+const CalculatorPage: React.FC = () => {
   return (
     <>
       <h1>Calculator Page</h1>
