@@ -35,8 +35,8 @@ yarn add -D stylelint \
 ```json
 {
   "scripts": {
-    "lint:style": "yarn stylelint **/*.scss",
-    "lint:style:fix": "yarn lint:style --fix"
+    "lint:css": "yarn stylelint **/*.scss",
+    "lint:css:fix": "yarn lint:css --fix"
   }
 }
 ```

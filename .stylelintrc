@@ -4,6 +4,7 @@
     "stylelint-prettier"
   ],
   "extends": [
+    "stylelint-config-recommended",
     "stylelint-config-standard",
     "stylelint-config-prettier",
     "stylelint-config-standard-scss",
@@ -30,7 +31,8 @@
           "apply",
           "variants",
           "responsive",
-          "screen"
+          "screen",
+          "extend"
         ]
       }
     ],
@@ -42,14 +44,18 @@
           "apply",
           "variants",
           "responsive",
-          "screen"
+          "screen",
+          "extend"
         ]
       }
     ],
+    "at-rule-no-vendor-prefix": null,
     "declaration-block-trailing-semicolon": "always",
     "declaration-block-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
     "no-descending-specificity": null,
-    "indentation": 2
+    "no-extra-semicolons": true,
+    "indentation": 2,
+    "property-no-vendor-prefix": null
   }
 }

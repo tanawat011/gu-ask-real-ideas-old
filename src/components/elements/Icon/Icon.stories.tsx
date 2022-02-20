@@ -1,8 +1,7 @@
-import React, { VFC } from 'react'
 import * as AllIcon from '@heroicons/react/solid'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-const ComponentAllIcons: VFC = () => (
+const ComponentAllIcons: React.FC = () => (
   <div className='flex flex-wrap'>
     {Object.entries(AllIcon).map(([key, Icon]) => (
       <div

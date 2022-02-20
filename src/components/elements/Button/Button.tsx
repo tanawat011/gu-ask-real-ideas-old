@@ -39,6 +39,7 @@ export const Button: VFC<PropButton> = ({
 
   const renderColor = (color: string) => {
     const _isDisabled = isDisabled || isLoading
+
     if (color === 'primary') {
       return clsx(
         'bg-primary-default hover:bg-primary-hover active:bg-primary-pressed',

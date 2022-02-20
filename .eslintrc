@@ -17,15 +17,75 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
-    "prefer-const": "error",
-    "arrow-body-style": "off",
-    "prefer-arrow-callback": "off",
-    "no-empty-function": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "error",
     "@typescript-eslint/no-empty-function": "off",
-    "object-curly-newline": "off",
-    "jest/no-hooks": "off",
+    "arrow-body-style": "off",
     "jest/require-hook": "off",
-    "jest/no-disabled-tests": "off"
+    "jest/no-hooks": "off",
+    "jest/no-disabled-tests": "off",
+    "jest/prefer-snapshot-hint": "off",
+    "newline-before-return": "error",
+    "no-empty-function": "off",
+    "object-curly-newline": "off",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": ["import", "cjs-import"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["import", "cjs-import"],
+        "next": ["import", "cjs-import"]
+      },
+      { "blankLine": "always", "prev": "*", "next": ["var", "let", "const"] },
+      { "blankLine": "always", "prev": ["var", "let", "const"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["var", "let", "const"],
+        "next": ["var", "let", "const"]
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "class",
+          "directive",
+          "multiline-block-like",
+          "throw",
+          "if",
+          "while",
+          "for",
+          "do",
+          "switch",
+          "function"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "class",
+          "cjs-export",
+          "try",
+          "if",
+          "while",
+          "for",
+          "do",
+          "switch",
+          "function"
+        ]
+      },
+      {
+        "blankLine": "any",
+        "prev": ["cjs-export"],
+        "next": ["cjs-export"]
+      },
+      {
+        "blankLine": "any",
+        "prev": ["if", "while", "for"],
+        "next": ["if", "while", "for"]
+      }
+    ],
+    "prefer-arrow-callback": "off",
+    "prefer-const": "error",
+    "prettier/prettier": "error"
   }
 }

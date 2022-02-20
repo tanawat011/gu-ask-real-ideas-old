@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { Button } from '@element/Button/Button'
+import { Button } from '@element/Button'
 
 describe('<Button />', () => {
   beforeEach(() => {

@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { Button } from '@element/Button/Button'
+import { Button } from '@element/Button'
+import { Loader } from '@element/Loader'
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <>
       <h1>Home Page</h1>
@@ -18,6 +19,10 @@ const HomePage = () => {
           {' '}
           <Button label='Go to Calculator' />
         </div>
+        <Loader />
+        <Loader loaderStyle='2pipe' />
+        <Loader loaderStyle='dash' />
+        <Loader loaderStyle='3floor' />
       </div>
     </>
   )

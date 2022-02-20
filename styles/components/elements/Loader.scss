@@ -1,0 +1,78 @@
+/**
+ * NOTE: Default loader and second style loader
+ */
+.loader, %loader {
+  width: 24px;
+  height: 24px;
+  border: 4px solid #f3f3f3; /* Background */
+  border-radius: 50%; /* Rounded borders */
+  border-top: 4px solid #3498db; /* Loader */
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite; /* spin | speed | spin style | time for spin */
+  z-index: 2;
+
+  &-second {  
+    @extend %loader;
+
+    border-bottom: 4px solid #3498db;
+  }
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/**
+ * NOTE: Dash style loader
+ */
+.loader-dash {
+  width: 24px;
+  height: 24px;
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  
+  & .path {
+    stroke: #3498db;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/**
+ * 3 Floor style loader
+ */
+.loader-3floor {
+  width: 24px;
+  height: 24px;
+  fill: #3498db;
+}

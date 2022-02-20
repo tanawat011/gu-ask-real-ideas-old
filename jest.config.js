@@ -50,6 +50,8 @@ const pathsIgnore = [
   '<rootDir>/next.config.js',
   '<rootDir>/postcss.config.js',
   '<rootDir>/tailwind.config.js',
+  'index.ts',
+  'index.js',
 ]
 
 const createJestConfig = nextJest({
