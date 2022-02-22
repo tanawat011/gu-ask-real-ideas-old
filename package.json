@@ -18,6 +18,7 @@
     "test:cv:msg": "yarn test:cv --verbose",
     "test:cv:w": "yarn test:cv --watchAll",
     "test:cv:msg:w": "yarn test:cv:msg --watchAll",
+    "test:open": "open coverage/lcov-report/index.html",
     "prepare": "husky install",
     "solve:pre:commit:not-exec": "chmod ug+x .husky/*",
     "pre:commit": "yarn lint && yarn lint:css && yarn build",

@@ -1,5 +1,4 @@
-import { addDecorator } from '@storybook/react'
-import { themes } from '@storybook/theming'
+import DarkTheme from './darkTheme'
 
 // Import the global style enabling tailwind classes
 import '../styles/globals.scss'
@@ -14,6 +13,6 @@ export const parameters = {
     },
   },
   docs: {
-    theme: themes.dark,
+    theme: DarkTheme,
   },
 }

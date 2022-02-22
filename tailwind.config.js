@@ -27,40 +27,40 @@ module.exports = {
       colors: {
         ...colors,
         primary: {
-          disabled: '#64B8FB',
+          disabled: '#333333',
           default: '#0070F3',
           hover: '#0056D0',
-          pressed: '#0056D0',
+          pressed: '#0040AE',
         },
         secondary: {
-          disabled: '#C17CEF',
+          disabled: '#333333',
           default: '#7928ca',
           hover: '#5E1DAD',
-          pressed: '#5E1DAD',
+          pressed: '#461491',
         },
         warning: {
-          disabled: '#faf089',
+          disabled: '#333333',
           default: '#ecc94b',
           hover: '#d69e2e',
-          pressed: '#d69e2e',
+          pressed: '#B06811',
         },
         danger: {
-          disabled: '#FB7085',
+          disabled: '#333333',
           default: '#f21361',
           hover: '#D00D65',
-          pressed: '#D00D65',
+          pressed: '#AE0963',
         },
         info: {
-          disabled: '#CCFFE9',
-          default: '#AAFFEC',
-          hover: '#7CDBCF',
-          pressed: '#7CDBCF',
+          disabled: '#333333',
+          default: '#55B7B4',
+          hover: '#368D93',
+          pressed: '#206C7A',
         },
         success: {
-          disabled: '#6FEE8D',
+          disabled: '#333333',
           default: '#17c964',
           hover: '#10AC63',
-          pressed: '#10AC63',
+          pressed: '#0B905F',
         },
         nextui: {
           blue: {
@@ -152,6 +152,9 @@ module.exports = {
             '900': '#111111',
           },
         },
+      },
+      boxShadow: {
+        nextui: '0 4px 14px 0 var(--tw-shadow-color)',
       },
       transitionProperty: {
         ...defaultTheme.transitionProperty,

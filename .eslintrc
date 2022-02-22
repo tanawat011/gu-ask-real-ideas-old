@@ -19,14 +19,16 @@
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "error",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-shadow": ["error"],
     "arrow-body-style": "off",
     "jest/require-hook": "off",
     "jest/no-hooks": "off",
     "jest/no-disabled-tests": "off",
+    "jest/prefer-called-with": "off",
     "jest/prefer-snapshot-hint": "off",
     "newline-before-return": "error",
     "no-empty-function": "off",
-    "no-shadow": "error",
+    "no-shadow": "off",
     "object-curly-newline": "off",
     "padding-line-between-statements": [
       "error",
