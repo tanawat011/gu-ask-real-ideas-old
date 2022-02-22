@@ -197,73 +197,67 @@ describe('<Button />', () => {
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-primary-disabled')
+    expect(buttonEl).toHaveClass('bg-primary-default')
   })
 
   it('should render to match snapshot with loading icon and primary color', async () => {
-    expect.assertions(2)
+    expect.assertions(1)
 
     const { findByRole } = render(<Button isLoading />)
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-primary-disabled')
-    expect(buttonEl).toHaveAttribute('disabled')
+    expect(buttonEl).toHaveClass('bg-primary-default')
   })
 
   it('should render to match snapshot with loading icon and secondary color', async () => {
-    expect.assertions(2)
+    expect.assertions(1)
 
     const { findByRole } = render(<Button isLoading color={COLOR.SECONDARY} />)
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-secondary-disabled')
-    expect(buttonEl).toHaveAttribute('disabled')
+    expect(buttonEl).toHaveClass('bg-secondary-default')
   })
 
   it('should render to match snapshot with loading icon and success color', async () => {
-    expect.assertions(2)
+    expect.assertions(1)
 
     const { findByRole } = render(<Button isLoading color={COLOR.SUCCESS} />)
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-success-disabled')
-    expect(buttonEl).toHaveAttribute('disabled')
+    expect(buttonEl).toHaveClass('bg-success-default')
   })
 
   it('should render to match snapshot with loading icon and warning color', async () => {
-    expect.assertions(2)
+    expect.assertions(1)
 
     const { findByRole } = render(<Button isLoading color={COLOR.WARNING} />)
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-warning-disabled')
-    expect(buttonEl).toHaveAttribute('disabled')
+    expect(buttonEl).toHaveClass('bg-warning-default')
   })
 
   it('should render to match snapshot with loading icon and info color', async () => {
-    expect.assertions(2)
+    expect.assertions(1)
 
     const { findByRole } = render(<Button isLoading color={COLOR.INFO} />)
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-info-disabled')
-    expect(buttonEl).toHaveAttribute('disabled')
+    expect(buttonEl).toHaveClass('bg-info-default')
   })
 
   it('should render to match snapshot with loading icon and danger color', async () => {
-    expect.assertions(2)
+    expect.assertions(1)
 
     const { findByRole } = render(<Button isLoading color={COLOR.DANGER} />)
 
     const buttonEl = await findByRole('button')
 
-    expect(buttonEl).toHaveClass('disabled:bg-danger-disabled')
-    expect(buttonEl).toHaveAttribute('disabled')
+    expect(buttonEl).toHaveClass('bg-danger-default')
   })
 
   it('should render to match snapshot with `width` and `label`', async () => {
