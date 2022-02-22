@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
@@ -10,6 +11,7 @@ delete colors.warmGray
 delete colors.trueGray
 delete colors.coolGray
 delete colors.blueGray
+delete defaultTheme.colors
 
 module.exports = {
   mode: 'jit',
@@ -21,12 +23,8 @@ module.exports = {
   },
   theme: {
     ...defaultTheme,
-    colors: {
-      ...colors,
-    },
     extend: {
       colors: {
-        ...colors,
         primary: {
           disabled: '#64B8FB',
           default: '#0070F3',
@@ -46,22 +44,22 @@ module.exports = {
           pressed: '#d69e2e',
         },
         danger: {
-          disabled: '#feb2b2',
-          default: '#f56565',
-          hover: '#e53e3e',
-          pressed: '#e53e3e',
+          disabled: '#FB7085',
+          default: '#f21361',
+          hover: '#D00D65',
+          pressed: '#D00D65',
         },
         info: {
-          disabled: '#81e6d9',
-          default: '#38b2ac',
-          hover: '#319795',
-          pressed: '#319795',
+          disabled: '#CCFFE9',
+          default: '#AAFFEC',
+          hover: '#7CDBCF',
+          pressed: '#7CDBCF',
         },
         success: {
-          disabled: '#9ae6b4',
-          default: '#48bb78',
-          hover: '#38a169',
-          pressed: '#38a169',
+          disabled: '#6FEE8D',
+          default: '#17c964',
+          hover: '#10AC63',
+          pressed: '#10AC63',
         },
         blue: {
           '100': '#bfd8fc',
