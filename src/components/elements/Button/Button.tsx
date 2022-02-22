@@ -26,31 +26,31 @@ export const Button: VFC<PropButton> = ({
   isLoading = false,
   onClick,
 }) => {
-  const renderSize = (size: string) => {
-    if (size === 'small') {
+  const renderSize = (_size: string) => {
+    if (_size === 'small') {
       return 'text-white font-bold py-1 px-2 text-sm'
     }
 
-    if (size === 'medium') {
+    if (_size === 'medium') {
       return 'text-white font-bold py-2 px-4 text-base'
     }
 
-    if (size === 'large') {
+    if (_size === 'large') {
       return 'text-white font-bold py-3 px-6 text-lg'
     }
   }
 
-  const renderColor = (color: string) => {
+  const renderColor = (_color: string) => {
     const _isDisabled = isDisabled || isLoading
 
-    if (color === 'primary') {
+    if (_color === 'primary') {
       return clsx(
         'bg-primary-default hover:bg-primary-hover active:bg-primary-pressed',
         _isDisabled && 'disabled:bg-primary-disabled cursor-not-allowed',
       )
     }
 
-    if (color === 'secondary') {
+    if (_color === 'secondary') {
       return clsx(
         'bg-secondary-default hover:bg-secondary-hover active:bg-secondary-pressed',
         _isDisabled && 'disabled:bg-secondary-disabled cursor-not-allowed',
@@ -59,7 +59,9 @@ export const Button: VFC<PropButton> = ({
   }
 
   const renderIcon = () => {
-    const iconName = Object.keys(AllIcon).find((iconName) => iconName === icon)
+    const iconName = Object.keys(AllIcon).find(
+      (_iconName) => _iconName === icon,
+    )
 
     if (iconName) {
       const Icon = AllIcon[iconName as 'ArchiveIcon']

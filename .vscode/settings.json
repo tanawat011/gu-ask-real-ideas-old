@@ -6,7 +6,9 @@
     "source.fixAll.eslint": true, // Tell VSCode to auto fix our code with eslint
     "source.fixAll.stylelint": true // Tell VSCode to auto fix our css code with stylelint
   },
-  "cSpell.words": [],
+  "cSpell.words": [
+    "nextui"
+  ],
 
   // ESLint with Prettier
   "eslint.alwaysShowStatus": true,

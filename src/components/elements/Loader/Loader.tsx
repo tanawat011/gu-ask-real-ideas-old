@@ -1,25 +1,14 @@
-import { LOADER_COLOR, LOADER_STYLE } from '@constants'
 import clsx from 'clsx'
+
+import { LOADER_COLOR, LOADER_STYLE } from '@constants'
 
 type PropsLoader = {
   color?: LOADER_COLOR
   loaderStyle?: LOADER_STYLE
+  className?: string
 }
 
-const LoaderDashStyle = (classColor: string) => (
-  <svg className={clsx('loader-dash', classColor)} viewBox='0 0 50 50'>
-    <circle
-      className='path'
-      cx='25'
-      cy='25'
-      r='20'
-      fill='none'
-      strokeWidth='8'
-    ></circle>
-  </svg>
-)
-
-const Loader3FloorStyle = (classColor = 'fill-blue-400') => (
+const Loader3FloorStyle = (classColor: string) => (
   <svg
     className={clsx('loader-3floor', classColor)}
     version='1.1'
@@ -74,60 +63,76 @@ L82,35.7z'
   </svg>
 )
 
-export const Loader: React.FC<PropsLoader> = (props) => {
-  const { loaderStyle = LOADER_STYLE.DEFAULT, color = LOADER_COLOR.DEFAULT } =
-    props
+const LoaderDashStyle = (classColor: string) => (
+  <svg className={clsx('loader-dash', classColor)} viewBox='0 0 50 50'>
+    <circle
+      className='path'
+      cx='25'
+      cy='25'
+      r='20'
+      fill='none'
+      strokeWidth='8'
+    ></circle>
+  </svg>
+)
 
-  const renderColor = (loaderStyle: LOADER_STYLE, color: LOADER_COLOR) => {
-    if (loaderStyle === LOADER_STYLE.TWO_PIPE) {
-      switch (color) {
+export const Loader: React.FC<PropsLoader> = (props) => {
+  const {
+    loaderStyle = LOADER_STYLE.DEFAULT,
+    color = LOADER_COLOR.DEFAULT,
+    className = '',
+  } = props
+
+  const renderColor = (style: LOADER_STYLE, classColor: LOADER_COLOR) => {
+    if (style === LOADER_STYLE.TWO_PIPE) {
+      switch (classColor) {
         case LOADER_COLOR.SKY:
-          return 'border-t-blue-400 border-b-blue-400'
+          return 'border-t-nextui-blue-400 border-b-nextui-blue-400'
         case LOADER_COLOR.WHITE:
           return 'border-t-white border-b-white'
 
         default:
-          return 'border-t-gray-400 border-b-gray-400'
+          return 'border-t-nextui-gray-400 border-b-nextui-gray-400'
       }
     }
 
-    if (loaderStyle === LOADER_STYLE.THREE_FLOOR) {
-      switch (color) {
+    if (style === LOADER_STYLE.THREE_FLOOR) {
+      switch (classColor) {
         case LOADER_COLOR.SKY:
-          return 'fill-blue-400'
+          return 'fill-nextui-blue-400'
         case LOADER_COLOR.WHITE:
           return 'fill-white'
 
         default:
-          return 'fill-gray-400'
+          return 'fill-nextui-gray-400'
       }
     }
 
-    if (loaderStyle === LOADER_STYLE.DASH) {
-      switch (color) {
+    if (style === LOADER_STYLE.DASH) {
+      switch (classColor) {
         case LOADER_COLOR.SKY:
-          return 'stroke-blue-400'
+          return 'stroke-nextui-blue-400'
         case LOADER_COLOR.WHITE:
           return 'stroke-white'
 
         default:
-          return 'stroke-gray-400'
+          return 'stroke-nextui-gray-400'
       }
     }
 
-    switch (color) {
+    switch (classColor) {
       case LOADER_COLOR.SKY:
-        return 'border-t-blue-400'
+        return 'border-t-nextui-blue-400'
       case LOADER_COLOR.WHITE:
         return 'border-t-white'
 
       default:
-        return 'border-t-gray-400'
+        return 'border-t-nextui-gray-400'
     }
   }
 
-  const renderLoader = (classColor: string) => {
-    switch (loaderStyle) {
+  const renderLoader = (style: LOADER_STYLE, classColor: string) => {
+    switch (style) {
       case LOADER_STYLE.TWO_PIPE:
         return (
           <div
@@ -158,7 +163,8 @@ export const Loader: React.FC<PropsLoader> = (props) => {
     }
   }
 
-  const _color = renderColor(loaderStyle, color)
+  const classColor = renderColor(loaderStyle, color)
+  const loader = renderLoader(loaderStyle, classColor)
 
-  return <div>{renderLoader(_color)}</div>
+  return <div className={className}>{loader}</div>
 }

@@ -1,10 +1,234 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Loader /> should render to match snapshot with 2pipe style 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="loader-second border-transparent border-4 border-t-4 border-b-4 border-t-nextui-gray-400 border-t-nextui-gray-400 border-b-nextui-gray-400"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with 2pipe style and default color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="loader-second border-transparent border-4 border-t-4 border-b-4 border-t-nextui-gray-400 border-t-nextui-gray-400 border-b-nextui-gray-400"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with 2pipe style and sky color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="loader-second border-transparent border-4 border-t-4 border-b-4 border-t-nextui-blue-400 border-t-nextui-blue-400 border-b-nextui-blue-400"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with 2pipe style and white color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="loader-second border-transparent border-4 border-t-4 border-b-4 border-t-white border-t-white border-b-white"
+    />
+  </div>
+</DocumentFragment>
+`;
+
 exports[`<Loader /> should render to match snapshot with 3floor style 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class=""
+  >
     <svg
-      class="loader-3floor fill-gray-400"
+      class="loader-3floor fill-nextui-gray-400"
+      enable-background="new 0 0 100 100"
+      id="L7"
+      version="1.1"
+      viewBox="0 0 100 100"
+      x="0px"
+      y="0px"
+    >
+      <path
+        d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3 c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="2s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="360 50 50"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7 c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="1s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="-360 50 50"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5 L82,35.7z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="2s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="360 50 50"
+          type="rotate"
+        />
+      </path>
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with 3floor style and default color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <svg
+      class="loader-3floor fill-nextui-gray-400"
+      enable-background="new 0 0 100 100"
+      id="L7"
+      version="1.1"
+      viewBox="0 0 100 100"
+      x="0px"
+      y="0px"
+    >
+      <path
+        d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3 c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="2s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="360 50 50"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7 c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="1s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="-360 50 50"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5 L82,35.7z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="2s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="360 50 50"
+          type="rotate"
+        />
+      </path>
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with 3floor style and sky color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <svg
+      class="loader-3floor fill-nextui-blue-400"
+      enable-background="new 0 0 100 100"
+      id="L7"
+      version="1.1"
+      viewBox="0 0 100 100"
+      x="0px"
+      y="0px"
+    >
+      <path
+        d="M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3 c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="2s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="360 50 50"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7 c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="1s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="-360 50 50"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5 L82,35.7z"
+      >
+        <animatetransform
+          attributeName="transform"
+          attributeType="XML"
+          dur="2s"
+          from="0 50 50"
+          repeatCount="indefinite"
+          to="360 50 50"
+          type="rotate"
+        />
+      </path>
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with 3floor style and white color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <svg
+      class="loader-3floor fill-white"
       enable-background="new 0 0 100 100"
       id="L7"
       version="1.1"
@@ -58,9 +282,77 @@ exports[`<Loader /> should render to match snapshot with 3floor style 1`] = `
 
 exports[`<Loader /> should render to match snapshot with dash style 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class=""
+  >
     <svg
-      class="loader-dash stroke-gray-400"
+      class="loader-dash stroke-nextui-gray-400"
+      viewBox="0 0 50 50"
+    >
+      <circle
+        class="path"
+        cx="25"
+        cy="25"
+        fill="none"
+        r="20"
+        stroke-width="8"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with dash style and default color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <svg
+      class="loader-dash stroke-nextui-gray-400"
+      viewBox="0 0 50 50"
+    >
+      <circle
+        class="path"
+        cx="25"
+        cy="25"
+        fill="none"
+        r="20"
+        stroke-width="8"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with dash style and sky color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <svg
+      class="loader-dash stroke-nextui-blue-400"
+      viewBox="0 0 50 50"
+    >
+      <circle
+        class="path"
+        cx="25"
+        cy="25"
+        fill="none"
+        r="20"
+        stroke-width="8"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with dash style and white color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <svg
+      class="loader-dash stroke-white"
       viewBox="0 0 50 50"
     >
       <circle
@@ -78,9 +370,11 @@ exports[`<Loader /> should render to match snapshot with dash style 1`] = `
 
 exports[`<Loader /> should render to match snapshot with default style 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class=""
+  >
     <div
-      class="loader border-transparent border-4 border-t-4 border-t-gray-400"
+      class="loader border-transparent border-4 border-t-4 border-t-nextui-gray-400"
     />
   </div>
 </DocumentFragment>
@@ -88,19 +382,47 @@ exports[`<Loader /> should render to match snapshot with default style 1`] = `
 
 exports[`<Loader /> should render to match snapshot with default style 2 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class=""
+  >
     <div
-      class="loader border-transparent border-4 border-t-4 border-t-gray-400"
+      class="loader border-transparent border-4 border-t-4 border-t-nextui-gray-400"
     />
   </div>
 </DocumentFragment>
 `;
 
-exports[`<Loader /> should render to match snapshot with second style 1`] = `
+exports[`<Loader /> should render to match snapshot with default style and default color 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class=""
+  >
     <div
-      class="loader-second border-transparent border-4 border-t-4 border-b-4 border-t-gray-400 border-t-gray-400 border-b-gray-400"
+      class="loader border-transparent border-4 border-t-4 border-t-nextui-gray-400"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with default style and sky color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="loader border-transparent border-4 border-t-4 border-t-nextui-blue-400"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Loader /> should render to match snapshot with default style and white color 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      class="loader border-transparent border-4 border-t-4 border-t-white"
     />
   </div>
 </DocumentFragment>
