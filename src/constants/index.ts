@@ -1,3 +1,4 @@
+export * from './button'
 export * from './color'
-export * from './loader'
+export * from './loading'
 export * from './size'

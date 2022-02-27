@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import clsx from 'clsx'
 
-import { LOADER_COLOR, LOADER_STYLE } from '@constants'
-import { Loader } from '@element/Loader'
+import { LOADING_COLOR, LOADING_STYLE } from '@constants'
+import { Loading } from '@element/Loader'
 
-const ComponentAllLoaders: React.FC<React.ComponentProps<typeof Loader>> = (
+const ComponentAllLoadings: React.FC<React.ComponentProps<typeof Loading>> = (
   props,
 ) => {
   const classCard = clsx(
@@ -23,37 +23,37 @@ const ComponentAllLoaders: React.FC<React.ComponentProps<typeof Loader>> = (
   return (
     <div className='flex flex-wrap'>
       <div className={classCard}>
-        <Loader
+        <Loading
           className='mb-5'
           {...props}
-          loaderStyle={LOADER_STYLE.DEFAULT}
+          loaderStyle={LOADING_STYLE.DEFAULT}
         />
 
         <span className='text-white'>Default</span>
       </div>
 
       <div className={classCard}>
-        <Loader
+        <Loading
           className='mb-5'
           {...props}
-          loaderStyle={LOADER_STYLE.TWO_PIPE}
+          loaderStyle={LOADING_STYLE.TWO_PIPE}
         />
 
         <span className='text-white'>2 Pipe</span>
       </div>
 
       <div className={classCard}>
-        <Loader
+        <Loading
           className='mb-5'
           {...props}
-          loaderStyle={LOADER_STYLE.THREE_FLOOR}
+          loaderStyle={LOADING_STYLE.THREE_FLOOR}
         />
 
         <span className='text-white'>3 Floor</span>
       </div>
 
       <div className={classCard}>
-        <Loader className='mb-5' {...props} loaderStyle={LOADER_STYLE.DASH} />
+        <Loading className='mb-5' {...props} loaderStyle={LOADING_STYLE.DASH} />
 
         <span className='text-white'>Dash</span>
       </div>
@@ -62,23 +62,23 @@ const ComponentAllLoaders: React.FC<React.ComponentProps<typeof Loader>> = (
 }
 
 export default {
-  title: 'Loader',
-  component: Loader,
-} as ComponentMeta<typeof Loader>
+  title: 'Loading',
+  component: Loading,
+} as ComponentMeta<typeof Loading>
 
-const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />
+const Template: ComponentStory<typeof Loading> = (args) => <Loading {...args} />
 
 export const Default = Template.bind({})
 
 Default.args = {
-  color: LOADER_COLOR.DEFAULT,
+  color: LOADING_COLOR.DEFAULT,
 }
 
-const TemplateAll: ComponentStory<typeof Loader> = () => (
+const TemplateAll: ComponentStory<typeof Loading> = () => (
   <>
-    <ComponentAllLoaders color={LOADER_COLOR.DEFAULT} />
-    <ComponentAllLoaders color={LOADER_COLOR.SKY} />
-    <ComponentAllLoaders color={LOADER_COLOR.WHITE} />
+    <ComponentAllLoadings color={LOADING_COLOR.DEFAULT} />
+    <ComponentAllLoadings color={LOADING_COLOR.SKY} />
+    <ComponentAllLoadings color={LOADING_COLOR.WHITE} />
   </>
 )
 

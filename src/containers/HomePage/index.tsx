@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { Button } from '@element/Button'
-import { Loader } from '@element/Loader'
+import { Loading } from '@element/Loader'
 
-import { LOADER_COLOR, LOADER_STYLE } from '@constants'
+import { LOADING_COLOR, LOADING_STYLE } from '@constants'
 import { useDarkMode } from '@hooks'
 
 const HomePage: React.FC = () => {
@@ -42,21 +42,21 @@ const HomePage: React.FC = () => {
             }}
           />
         </div>
-        <Loader />
-        <Loader loaderStyle={LOADER_STYLE.TWO_PIPE} />
-        <Loader loaderStyle={LOADER_STYLE.DASH} />
-        <Loader loaderStyle={LOADER_STYLE.THREE_FLOOR} />
-        <Loader
-          loaderStyle={LOADER_STYLE.THREE_FLOOR}
-          color={LOADER_COLOR.DEFAULT}
+        <Loading />
+        <Loading loaderStyle={LOADING_STYLE.TWO_PIPE} />
+        <Loading loaderStyle={LOADING_STYLE.DASH} />
+        <Loading loaderStyle={LOADING_STYLE.THREE_FLOOR} />
+        <Loading
+          loaderStyle={LOADING_STYLE.THREE_FLOOR}
+          color={LOADING_COLOR.DEFAULT}
         />
-        <Loader
-          loaderStyle={LOADER_STYLE.THREE_FLOOR}
-          color={LOADER_COLOR.SKY}
+        <Loading
+          loaderStyle={LOADING_STYLE.THREE_FLOOR}
+          color={LOADING_COLOR.SKY}
         />
-        <Loader
-          loaderStyle={LOADER_STYLE.THREE_FLOOR}
-          color={LOADER_COLOR.WHITE}
+        <Loading
+          loaderStyle={LOADING_STYLE.THREE_FLOOR}
+          color={LOADING_COLOR.WHITE}
         />
       </div>
     </>

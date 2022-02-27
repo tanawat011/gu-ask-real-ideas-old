@@ -1,244 +1,225 @@
 import clsx from 'clsx'
+import { MouseEvent } from 'react'
 import * as AllIcon from '@heroicons/react/solid'
 
-import { COLOR, LOADER_COLOR, LOADER_STYLE, SIZE } from '@constants'
-import { Loader } from '@element/Loader'
+import {
+  BUTTON_STYLE,
+  COLOR,
+  LOADING_COLOR,
+  LOADING_STYLE,
+  SIZE,
+} from '@constants'
+import { Loading } from '@element/Loader'
+import {
+  renderPrimaryClass,
+  renderSecondaryClass,
+  renderSuccessClass,
+  renderWarningClass,
+  renderInfoClass,
+  renderDangerClass,
+} from './Button.helper'
 
-type PropButton = {
+export type PropButton = {
   width?: number
   label?: string
   size?: SIZE
   color?: COLOR
-  icon?: string
+  buttonStyle?: BUTTON_STYLE
+  icon?: keyof typeof AllIcon | ''
+  iconRight?: keyof typeof AllIcon | ''
+  isIconFit?: boolean
   isDisabled?: boolean
   isLoading?: boolean
-  isBordered?: boolean
   isRounded?: boolean
-  isGhost?: boolean
+  isRipple?: boolean
+  isAutoWidth?: boolean
   hasShadow?: boolean
-  onClick?: () => void
+  onClick?: (event: MouseEvent) => void
 }
 
-export const Button: React.FC<PropButton> = ({
-  width,
-  label,
-  size = SIZE.MEDIUM,
-  color = COLOR.PRIMARY,
-  icon,
-  isDisabled = false,
-  isLoading = false,
-  isBordered = false,
-  isRounded = false,
-  isGhost = false,
-  hasShadow = false,
-  onClick,
-}) => {
-  const renderSize = (_size: SIZE) => {
-    switch (_size) {
-      case SIZE.SMALL:
-        return 'text-white font-bold py-1 px-2 text-sm'
+export const Button: React.FC<PropButton> = (props) => {
+  const {
+    width,
+    label,
+    size = SIZE.MD,
+    color = COLOR.PRIMARY,
+    iconRight,
+    icon,
+    buttonStyle = BUTTON_STYLE.DEFAULT,
+    isIconFit = false,
+    isDisabled = false,
+    isLoading = false,
+    isRounded = false,
+    isRipple = true,
+    isAutoWidth = true,
+    onClick,
+  } = props
 
-      case SIZE.LARGE:
-        return 'text-white font-bold py-3 px-6 text-lg'
+  const createRippleEffect = (event: MouseEvent, _color: COLOR) => {
+    const button = event.currentTarget as EventTarget &
+      Element & { offsetLeft: number; offsetTop: number }
 
-      case SIZE.MEDIUM:
-      default:
-        return 'text-white font-bold py-2 px-4 text-base'
+    const circle = document.createElement('span')
+    const diameter = Math.max(button.clientWidth, button.clientHeight)
+    const radius = diameter / 2
+
+    circle.style.width = circle.style.height = `${diameter}px`
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`
+    circle.classList.add('ripple')
+
+    if (buttonStyle !== BUTTON_STYLE.DEFAULT) {
+      switch (_color) {
+        case COLOR.SECONDARY:
+          circle.classList.add('bg-secondary-default')
+          break
+        case COLOR.SUCCESS:
+          circle.classList.add('bg-success-default')
+          break
+        case COLOR.WARNING:
+          circle.classList.add('bg-warning-default')
+          break
+        case COLOR.INFO:
+          circle.classList.add('bg-info-default')
+          break
+        case COLOR.DANGER:
+          circle.classList.add('bg-danger-default')
+          break
+        case COLOR.PRIMARY:
+        default:
+          circle.classList.add('bg-primary-default')
+          break
+      }
+    } else {
+      circle.classList.add('bg-black')
     }
+
+    const ripple = button.getElementsByClassName('ripple')[0]
+
+    if (ripple) {
+      ripple.remove()
+    }
+
+    button.appendChild(circle)
   }
 
-  const renderColorHover = (_color: COLOR) => {
-    switch (_color) {
-      case COLOR.SECONDARY:
-        if (isGhost) {
-          return 'hover:bg-secondary-default'
-        }
+  const renderSize = (_size: SIZE) => {
+    switch (_size) {
+      case SIZE.XS:
+        return clsx(
+          'h-6 px-2 text-xs font-semibold',
+          !isAutoWidth && 'w-20',
+          !isRounded && 'rounded-xl',
+        )
 
-        if (isBordered) {
-          return 'hover:opacity-80'
-        }
+      case SIZE.SM:
+        return clsx(
+          'h-8 px-2 text-sm font-semibold',
+          !isAutoWidth && 'w-36',
+          !isRounded && 'rounded-xl',
+        )
 
-        return !isLoading && 'hover:bg-secondary-hover'
+      case SIZE.LG:
+        return clsx(
+          'h-11 px-6 text-lg font-bold',
+          !isAutoWidth && 'w-60',
+          !isRounded && 'rounded-xl',
+        )
 
-      case COLOR.SUCCESS:
-        if (isGhost) {
-          return 'hover:bg-success-default'
-        }
+      case SIZE.XL:
+        return clsx(
+          'h-14 px-6 text-xl font-bold',
+          !isAutoWidth && 'w-72',
+          !isRounded && 'rounded-xl',
+        )
 
-        if (isBordered) {
-          return 'hover:opacity-80'
-        }
-
-        return !isLoading && 'hover:bg-success-hover'
-      case COLOR.WARNING:
-        if (isGhost) {
-          return 'hover:bg-warning-default'
-        }
-
-        if (isBordered) {
-          return 'hover:opacity-80'
-        }
-
-        return !isLoading && 'hover:bg-warning-hover'
-
-      case COLOR.INFO:
-        if (isGhost) {
-          return 'hover:bg-info-default'
-        }
-
-        if (isBordered) {
-          return 'hover:opacity-80'
-        }
-
-        return !isLoading && 'hover:bg-info-hover'
-
-      case COLOR.DANGER:
-        if (isGhost) {
-          return 'hover:bg-danger-default'
-        }
-
-        if (isBordered) {
-          return 'hover:opacity-80'
-        }
-
-        return !isLoading && 'hover:bg-danger-hover'
-
-      case COLOR.PRIMARY:
+      case SIZE.MD:
       default:
-        if (isGhost) {
-          return 'hover:bg-primary-default'
-        }
-
-        if (isBordered) {
-          return 'hover:opacity-80'
-        }
-
-        return !isLoading && 'hover:bg-primary-hover'
+        return clsx(
+          'h-10 px-4 text-base font-semibold',
+          !isAutoWidth && 'w-48',
+          !isRounded && 'rounded-xl',
+        )
     }
   }
 
   const renderColor = (_color: COLOR) => {
     switch (_color) {
       case COLOR.SECONDARY:
-        return isDisabled
-          ? 'disabled:bg-secondary-disabled text-nextui-gray-600'
-          : clsx(
-              !isLoading && 'active:bg-secondary-pressed',
-              isBordered
-                ? `bg-transparent border-solid border-2 border-secondary-default text-secondary-default`
-                : 'bg-secondary-default',
-              renderColorHover(_color),
-            )
+        return renderSecondaryClass(props)
 
       case COLOR.SUCCESS:
-        return isDisabled
-          ? 'disabled:bg-success-disabled text-nextui-gray-600'
-          : clsx(
-              !isLoading && 'active:bg-success-pressed',
-              isBordered
-                ? `bg-transparent border-solid border-2 border-success-default text-success-default`
-                : 'bg-success-default',
-              renderColorHover(_color),
-            )
+        return renderSuccessClass(props)
 
       case COLOR.WARNING:
-        return isDisabled
-          ? 'disabled:bg-warning-disabled text-nextui-gray-600'
-          : clsx(
-              !isLoading && 'active:bg-warning-pressed',
-              isBordered
-                ? `bg-transparent border-solid border-2 border-warning-default text-warning-default`
-                : 'bg-warning-default',
-              renderColorHover(_color),
-            )
+        return renderWarningClass(props)
 
       case COLOR.INFO:
-        return isDisabled
-          ? 'disabled:bg-info-disabled text-nextui-gray-600'
-          : clsx(
-              !isLoading && 'active:bg-info-pressed',
-              isBordered
-                ? `bg-transparent border-solid border-2 border-info-default text-info-default`
-                : 'bg-info-default',
-              renderColorHover(_color),
-            )
+        return renderInfoClass(props)
 
       case COLOR.DANGER:
-        return isDisabled
-          ? 'disabled:bg-danger-disabled text-nextui-gray-600'
-          : clsx(
-              !isLoading && 'active:bg-danger-pressed',
-              isBordered
-                ? `bg-transparent border-solid border-2 border-danger-default text-danger-default`
-                : 'bg-danger-default',
-              renderColorHover(_color),
-            )
+        return renderDangerClass(props)
 
       case COLOR.PRIMARY:
       default:
-        return isDisabled
-          ? 'disabled:bg-primary-disabled text-nextui-gray-600'
-          : clsx(
-              !isLoading && 'active:bg-primary-pressed',
-              isBordered
-                ? `bg-transparent border-solid border-2 border-primary-default text-primary-default`
-                : 'bg-primary-default',
-              renderColorHover(_color),
-            )
+        return renderPrimaryClass(props)
     }
   }
 
-  const renderIcon = () => {
+  const renderIcon = (_icon: string, position: 'left' | 'right') => {
     const iconName = Object.keys(AllIcon).find(
-      (_iconName) => _iconName === icon,
+      (_iconName) => _iconName === _icon,
     )
 
     if (iconName) {
       const Icon = AllIcon[iconName as 'ArchiveIcon']
 
-      return <Icon className={clsx(label ? 'w-8 pr-2' : 'w-6')} />
+      const isLeft = position === 'left'
+
+      const classWidthIcon = label ? 'w-8' : 'w-6'
+      let classPaddingIcon = ''
+
+      if (label) {
+        classPaddingIcon = isLeft ? 'pr-2' : 'pl-2'
+      }
+
+      const classIcon = clsx(
+        classWidthIcon,
+        classPaddingIcon,
+        isIconFit && 'absolute',
+        isIconFit && isLeft ? 'left-4' : 'right-4',
+      )
+
+      return <Icon className={classIcon} />
     }
   }
 
   const renderLoading = () => {
-    return <Loader loaderStyle={LOADER_STYLE.DASH} color={LOADER_COLOR.WHITE} />
-  }
-
-  const renderShadow = (_color: COLOR) => {
-    if (isDisabled) {
-      return 'shadow-none'
-    }
-
-    switch (_color) {
-      case COLOR.SECONDARY:
-        return 'shadow-nextui shadow-secondary-default'
-
-      case COLOR.SUCCESS:
-        return 'shadow-nextui shadow-success-default'
-
-      case COLOR.WARNING:
-        return 'shadow-nextui shadow-warning-default'
-
-      case COLOR.INFO:
-        return 'shadow-nextui shadow-info-default'
-
-      case COLOR.DANGER:
-        return 'shadow-nextui shadow-danger-default'
-
-      case COLOR.PRIMARY:
-      default:
-        return 'shadow-nextui shadow-primary-default'
-    }
-  }
-
-  const renderRounded = () => {
-    return isRounded ? 'rounded-full' : 'rounded-xl'
+    return (
+      <Loading loaderStyle={LOADING_STYLE.DASH} color={LOADING_COLOR.WHITE} />
+    )
   }
 
   const renderCursor = () => {
     if (isDisabled || isLoading) {
       return 'cursor-not-allowed'
     }
+  }
+
+  const renderRounded = () => {
+    if (isRounded) {
+      return 'rounded-full'
+    }
+  }
+
+  const renderScaleSize = () => {
+    if (!isLoading && !isDisabled) {
+      return 'active:scale-95'
+    }
+  }
+
+  const renderDisabled = () => {
+    return isDisabled || isLoading
   }
 
   const renderChild = () => {
@@ -248,7 +229,9 @@ export const Button: React.FC<PropButton> = ({
 
     return (
       <>
-        {icon && renderIcon()} {label}
+        {icon && <>{renderIcon(icon, 'left')}</>}
+        {label}
+        {iconRight && <>{renderIcon(iconRight, 'right')}</>}
       </>
     )
   }
@@ -256,17 +239,24 @@ export const Button: React.FC<PropButton> = ({
   return (
     <button
       className={clsx(
-        'relative flex justify-center items-center',
-        !isLoading && 'active:scale-95',
+        'relative flex justify-center items-center overflow-hidden transition-colors',
+        renderScaleSize(),
         renderRounded(),
+        renderCursor(),
         renderSize(size),
         renderColor(color),
-        renderCursor(),
-        hasShadow && renderShadow(color),
       )}
-      style={{ width }}
-      disabled={isDisabled || isLoading}
-      onClick={onClick}
+      style={{ ...(width && { width }) }}
+      disabled={renderDisabled()}
+      onClick={(event) => {
+        if (isRipple) {
+          createRippleEffect(event, color)
+        }
+
+        if (onClick) {
+          onClick(event)
+        }
+      }}
     >
       {renderChild()}
     </button>

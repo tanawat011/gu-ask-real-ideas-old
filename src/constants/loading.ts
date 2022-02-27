@@ -1,12 +1,12 @@
-export enum LOADER_COLOR {
+export enum LOADING_COLOR {
   DEFAULT = 'default',
   SKY = 'sky',
   WHITE = 'white',
 }
 
-export enum LOADER_STYLE {
+export enum LOADING_STYLE {
   DEFAULT = 'default',
-  TWO_PIPE = '2pipe',
+  TWO_PIPE = 'two_pipe',
   DASH = 'dash',
   THREE_FLOOR = '3floor',
 }
