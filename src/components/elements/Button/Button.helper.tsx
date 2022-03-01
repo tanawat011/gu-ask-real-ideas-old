@@ -11,10 +11,6 @@ export const renderPrimaryClass = (props: PropButton): string => {
       case BUTTON_STYLE.LIGHT:
         return 'disabled:bg-transparent text-nextui-gray-600'
 
-      case BUTTON_STYLE.OUTLINE:
-      case BUTTON_STYLE.FLAT:
-      case BUTTON_STYLE.GHOST:
-      case BUTTON_STYLE.DEFAULT:
       default:
         return 'disabled:bg-primary-disabled text-nextui-gray-600'
     }
@@ -60,23 +56,11 @@ export const renderPrimaryClass = (props: PropButton): string => {
     return clsx('bg-transparent text-primary-default', classHover())
   }
 
-  const classActive = () => {
-    if (!isLoading) {
-      return 'active:bg-primary-pressed'
-    }
-  }
-
-  const classShadow = () => {
-    if (hasShadow) {
-      return 'shadow-nextui shadow-primary-default'
-    }
-  }
-
   return clsx(
     'bg-primary-default text-white',
-    classActive(),
     classHover(),
-    classShadow(),
+    !isLoading && 'active:bg-primary-pressed',
+    hasShadow && 'shadow-nextui shadow-primary-default',
   )
 }
 
@@ -88,10 +72,6 @@ export const renderSecondaryClass = (props: PropButton): string => {
       case BUTTON_STYLE.LIGHT:
         return 'disabled:bg-transparent text-nextui-gray-600'
 
-      case BUTTON_STYLE.OUTLINE:
-      case BUTTON_STYLE.FLAT:
-      case BUTTON_STYLE.GHOST:
-      case BUTTON_STYLE.DEFAULT:
       default:
         return 'disabled:bg-secondary-disabled text-nextui-gray-600'
     }
@@ -131,7 +111,7 @@ export const renderSecondaryClass = (props: PropButton): string => {
 
   if (props.buttonStyle === BUTTON_STYLE.FLAT) {
     return clsx(
-      'bg-secondary-default-flat text-secondary-default hover:opacity-80',
+      'bg-secondary-default-flat text-secondary-default',
       classHover(),
     )
   }
@@ -140,23 +120,11 @@ export const renderSecondaryClass = (props: PropButton): string => {
     return clsx('bg-transparent text-secondary-default', classHover())
   }
 
-  const classActive = () => {
-    if (!isLoading) {
-      return 'active:bg-secondary-pressed'
-    }
-  }
-
-  const classShadow = () => {
-    if (hasShadow) {
-      return 'shadow-nextui shadow-secondary-default'
-    }
-  }
-
   return clsx(
     'bg-secondary-default text-white',
-    classActive(),
     classHover(),
-    classShadow(),
+    !isLoading && 'active:bg-secondary-pressed',
+    hasShadow && 'shadow-nextui shadow-secondary-default',
   )
 }
 
@@ -168,10 +136,6 @@ export const renderSuccessClass = (props: PropButton): string => {
       case BUTTON_STYLE.LIGHT:
         return 'disabled:bg-transparent text-nextui-gray-600'
 
-      case BUTTON_STYLE.OUTLINE:
-      case BUTTON_STYLE.FLAT:
-      case BUTTON_STYLE.GHOST:
-      case BUTTON_STYLE.DEFAULT:
       default:
         return 'disabled:bg-success-disabled text-nextui-gray-600'
     }
@@ -210,33 +174,18 @@ export const renderSuccessClass = (props: PropButton): string => {
   }
 
   if (props.buttonStyle === BUTTON_STYLE.FLAT) {
-    return clsx(
-      'bg-success-default-flat text-success-default hover:opacity-80',
-      classHover(),
-    )
+    return clsx('bg-success-default-flat text-success-default', classHover())
   }
 
   if (props.buttonStyle === BUTTON_STYLE.LIGHT) {
     return clsx('bg-transparent text-success-default', classHover())
   }
 
-  const classActive = () => {
-    if (!isLoading) {
-      return 'active:bg-success-pressed'
-    }
-  }
-
-  const classShadow = () => {
-    if (hasShadow) {
-      return 'shadow-nextui shadow-success-default'
-    }
-  }
-
   return clsx(
     'bg-success-default text-white',
-    classActive(),
     classHover(),
-    classShadow(),
+    !isLoading && 'active:bg-success-pressed',
+    hasShadow && 'shadow-nextui shadow-success-default',
   )
 }
 
@@ -248,10 +197,6 @@ export const renderWarningClass = (props: PropButton): string => {
       case BUTTON_STYLE.LIGHT:
         return 'disabled:bg-transparent text-nextui-gray-600'
 
-      case BUTTON_STYLE.OUTLINE:
-      case BUTTON_STYLE.FLAT:
-      case BUTTON_STYLE.GHOST:
-      case BUTTON_STYLE.DEFAULT:
       default:
         return 'disabled:bg-warning-disabled text-nextui-gray-600'
     }
@@ -290,33 +235,18 @@ export const renderWarningClass = (props: PropButton): string => {
   }
 
   if (props.buttonStyle === BUTTON_STYLE.FLAT) {
-    return clsx(
-      'bg-warning-default-flat text-warning-default hover:opacity-80',
-      classHover(),
-    )
+    return clsx('bg-warning-default-flat text-warning-default', classHover())
   }
 
   if (props.buttonStyle === BUTTON_STYLE.LIGHT) {
     return clsx('bg-transparent text-warning-default', classHover())
   }
 
-  const classActive = () => {
-    if (!isLoading) {
-      return 'active:bg-warning-pressed'
-    }
-  }
-
-  const classShadow = () => {
-    if (hasShadow) {
-      return 'shadow-nextui shadow-warning-default'
-    }
-  }
-
   return clsx(
     'bg-warning-default text-white',
-    classActive(),
     classHover(),
-    classShadow(),
+    !isLoading && 'active:bg-warning-pressed',
+    hasShadow && 'shadow-nextui shadow-warning-default',
   )
 }
 
@@ -328,10 +258,6 @@ export const renderInfoClass = (props: PropButton): string => {
       case BUTTON_STYLE.LIGHT:
         return 'disabled:bg-transparent text-nextui-gray-600'
 
-      case BUTTON_STYLE.OUTLINE:
-      case BUTTON_STYLE.FLAT:
-      case BUTTON_STYLE.GHOST:
-      case BUTTON_STYLE.DEFAULT:
       default:
         return 'disabled:bg-info-disabled text-nextui-gray-600'
     }
@@ -370,33 +296,18 @@ export const renderInfoClass = (props: PropButton): string => {
   }
 
   if (props.buttonStyle === BUTTON_STYLE.FLAT) {
-    return clsx(
-      'bg-info-default-flat text-info-default hover:opacity-80',
-      classHover(),
-    )
+    return clsx('bg-info-default-flat text-info-default', classHover())
   }
 
   if (props.buttonStyle === BUTTON_STYLE.LIGHT) {
     return clsx('bg-transparent text-info-default', classHover())
   }
 
-  const classActive = () => {
-    if (!isLoading) {
-      return 'active:bg-info-pressed'
-    }
-  }
-
-  const classShadow = () => {
-    if (hasShadow) {
-      return 'shadow-nextui shadow-info-default'
-    }
-  }
-
   return clsx(
     'bg-info-default text-white',
-    classActive(),
     classHover(),
-    classShadow(),
+    !isLoading && 'active:bg-info-pressed',
+    hasShadow && 'shadow-nextui shadow-info-default',
   )
 }
 
@@ -408,10 +319,6 @@ export const renderDangerClass = (props: PropButton): string => {
       case BUTTON_STYLE.LIGHT:
         return 'disabled:bg-transparent text-nextui-gray-600'
 
-      case BUTTON_STYLE.OUTLINE:
-      case BUTTON_STYLE.FLAT:
-      case BUTTON_STYLE.GHOST:
-      case BUTTON_STYLE.DEFAULT:
       default:
         return 'disabled:bg-danger-disabled text-nextui-gray-600'
     }
@@ -450,32 +357,17 @@ export const renderDangerClass = (props: PropButton): string => {
   }
 
   if (props.buttonStyle === BUTTON_STYLE.FLAT) {
-    return clsx(
-      'bg-danger-default-flat text-danger-default hover:opacity-80',
-      classHover(),
-    )
+    return clsx('bg-danger-default-flat text-danger-default', classHover())
   }
 
   if (props.buttonStyle === BUTTON_STYLE.LIGHT) {
     return clsx('bg-transparent text-danger-default', classHover())
   }
 
-  const classActive = () => {
-    if (!isLoading) {
-      return 'active:bg-danger-pressed'
-    }
-  }
-
-  const classShadow = () => {
-    if (hasShadow) {
-      return 'shadow-nextui shadow-danger-default'
-    }
-  }
-
   return clsx(
     'bg-danger-default text-white',
-    classActive(),
     classHover(),
-    classShadow(),
+    !isLoading && 'active:bg-danger-pressed',
+    hasShadow && 'shadow-nextui shadow-danger-default',
   )
 }
