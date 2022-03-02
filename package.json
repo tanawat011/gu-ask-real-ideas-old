@@ -12,7 +12,7 @@
     "lint:css:fix": "yarn lint:css --fix",
     "storybook": "start-storybook -p 6006 -s public",
     "storybook:build": "build-storybook",
-    "test": "jest",
+    "test": "jest -w 1",
     "test:u": "jest -w 1 -u",
     "test:cv": "yarn test --coverage",
     "test:cv:msg": "yarn test:cv --verbose",
