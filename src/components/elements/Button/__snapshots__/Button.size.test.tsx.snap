@@ -26,3 +26,13 @@ exports[`<Button /> should render to match snapshot 1`] = `
   </button>
 </DocumentFragment>
 `;
+
+exports[`<Button /> should render without props 1`] = `
+<DocumentFragment>
+  <button
+    class="relative flex justify-center items-center overflow-hidden transition-colors active:scale-95 h-10 px-4 text-base font-semibold rounded-xl bg-primary-default text-white hover:bg-primary-hover active:bg-primary-pressed"
+  >
+    Button A
+  </button>
+</DocumentFragment>
+`;

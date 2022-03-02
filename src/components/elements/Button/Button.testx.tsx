@@ -25,22 +25,6 @@ describe('<Button />', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  Object.keys(SIZE).forEach((size) => {
-    const _size = size.toLowerCase() === 'md' ? 'base' : size.toLowerCase()
-
-    it(`should be button size ${size.toLowerCase()}`, async () => {
-      expect.assertions(1)
-
-      const { findByRole } = render(
-        <Button size={SIZE[size as keyof typeof SIZE]} label='Test' />,
-      )
-
-      const button = await findByRole('button')
-
-      expect(button).toHaveClass(`text-${_size}`)
-    })
-  })
-
   Object.keys(COLOR).forEach((color) => {
     it(`should be ${color.toLowerCase()} button`, async () => {
       expect.assertions(1)

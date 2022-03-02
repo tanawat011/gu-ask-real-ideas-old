@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { MouseEvent } from 'react'
 import * as AllIcon from '@heroicons/react/solid'
 
@@ -10,6 +9,7 @@ import {
   SIZE,
 } from '@constants'
 import { Loading } from '@element/Loader'
+import { clsx } from '@libs'
 import {
   renderPrimaryClass,
   renderSecondaryClass,

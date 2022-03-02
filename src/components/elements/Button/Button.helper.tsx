@@ -1,6 +1,5 @@
-import clsx from 'clsx'
-
 import { BUTTON_STYLE } from '@constants'
+import { clsx } from '@libs'
 import { PropButton } from '.'
 
 export const renderPrimaryClass = (props: PropButton): string => {
