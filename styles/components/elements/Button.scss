@@ -1,7 +1,5 @@
-$theme-colors: 'primary', 'secondary', 'success', 'info', 'warning', 'danger';
-
 .btn {
-  @apply relative flex justify-center items-center overflow-hidden transition-colors active:scale-95;
+  @apply relative flex justify-center items-center overflow-hidden transition-colors active:scale-97;
 
   &__disabled {
     @apply active:scale-100;

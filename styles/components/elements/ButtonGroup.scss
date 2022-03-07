@@ -1,0 +1,83 @@
+/* stylelint-disable selector-class-pattern */
+
+.btn__group {
+  display: flex;
+
+  @each $theme-color in $theme-colors {
+    &-vertical#{&} {
+      flex-direction: column;
+
+      button:first-child {
+        @apply rounded-none rounded-t-lg;
+
+        &.btn__rounded {
+          @apply rounded-b-none rounded-full #{!important};
+        }
+      }
+
+      button:last-child {
+        @apply rounded-none rounded-b-lg;
+
+        &.btn__rounded {
+          @apply rounded-t-none rounded-full #{!important};
+        }
+      }
+
+      button:not(:first-child,:last-child) {
+        @apply rounded-none;
+      }
+
+      button:not(:first-child) {
+        &.btn__#{$theme-color}-outline {
+          @apply border-t-0 border-l-2;
+        }
+
+        &.btn__#{$theme-color}-ghost {
+          @apply border-t-0 border-l-2;
+        }
+      }
+    }
+
+    button:first-child {
+      @apply rounded-none rounded-l-lg;
+
+      &.btn__rounded {
+        @apply rounded-r-none #{!important};
+      }
+    }
+
+    button:last-child {
+      @apply rounded-none rounded-r-lg;
+
+      &.btn__rounded {
+        @apply rounded-l-none #{!important};
+      }
+    }
+
+    button:not(:first-child,:last-child) {
+      @apply rounded-none;
+
+      &.btn__rounded {
+        @apply rounded-none #{!important};
+      }
+    }
+
+    button:not(:first-child) {
+      &.btn__#{$theme-color}-outline {
+        @apply border-l-0;
+      }
+
+      &.btn__#{$theme-color}-ghost {
+        @apply border-l-0;
+      }
+    }
+
+    button:first-child:nth-last-child(1) {
+      @apply rounded-md;
+
+      &.btn__rounded {
+        @apply rounded-full #{!important};
+      }
+    }
+  }
+}

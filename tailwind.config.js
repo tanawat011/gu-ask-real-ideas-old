@@ -162,6 +162,9 @@ module.exports = {
       boxShadow: {
         nextui: '0 4px 14px 0 var(--tw-shadow-color)',
       },
+      scale: {
+        97: '0.97',
+      },
       transitionProperty: {
         ...defaultTheme.transitionProperty,
         width: 'width',
