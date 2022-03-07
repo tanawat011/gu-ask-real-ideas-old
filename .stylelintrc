@@ -32,7 +32,8 @@
           "variants",
           "responsive",
           "screen",
-          "extend"
+          "extend",
+          "each"
         ]
       }
     ],
@@ -45,7 +46,8 @@
           "variants",
           "responsive",
           "screen",
-          "extend"
+          "extend",
+          "each"
         ]
       }
     ],

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should be without ripple effect button 1`] = `
+<DocumentFragment>
+  <button
+    class="btn btn__md btn__primary"
+  >
+    Test
+  </button>
+</DocumentFragment>
+`;
+
+exports[`<Button /> should render to match snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="btn btn__md btn__primary btn__primary-shadow"
+    style="width: 100px;"
+  >
+    <svg
+      class="w-8 pr-2 right-4"
+    />
+    Button A
+  </button>
+</DocumentFragment>
+`;
+
+exports[`<Button /> should render without props 1`] = `
+<DocumentFragment>
+  <button
+    class="btn btn__md btn__primary"
+  >
+    Button A
+  </button>
+</DocumentFragment>
+`;

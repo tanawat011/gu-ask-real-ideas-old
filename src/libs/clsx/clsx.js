@@ -22,7 +22,6 @@ const toVal = (mix) => {
       for (k in mix) {
         if (mix[k]) {
           str && (str += ' ')
-
           str += k
         }
       }

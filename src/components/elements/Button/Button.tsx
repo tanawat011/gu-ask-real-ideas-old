@@ -1,5 +1,6 @@
 import { MouseEvent } from 'react'
-import * as AllIcon from '@heroicons/react/solid'
+import * as _AllIcon from '@heroicons/react/solid'
+// import { ArchiveIcon } from '@heroicons/react/solid'
 
 import {
   BUTTON_STYLE,
@@ -10,14 +11,9 @@ import {
 } from '@constants'
 import { Loading } from '@element/Loader'
 import { clsx } from '@libs'
-import {
-  renderPrimaryClass,
-  renderSecondaryClass,
-  renderSuccessClass,
-  renderWarningClass,
-  renderInfoClass,
-  renderDangerClass,
-} from './Button.helper'
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const AllIcon = require('@heroicons/react/solid')
 
 export type PropButton = {
   width?: number
@@ -25,15 +21,15 @@ export type PropButton = {
   size?: SIZE
   color?: COLOR
   buttonStyle?: BUTTON_STYLE
-  icon?: keyof typeof AllIcon | ''
-  iconRight?: keyof typeof AllIcon | ''
-  isIconFit?: boolean
-  isDisabled?: boolean
-  isLoading?: boolean
-  isRounded?: boolean
-  isRipple?: boolean
-  isAutoWidth?: boolean
-  hasShadow?: boolean
+  icon?: keyof typeof _AllIcon | ''
+  iconRight?: keyof typeof _AllIcon | ''
+  iconFit?: boolean
+  disabled?: boolean
+  loading?: boolean
+  rounded?: boolean
+  rippleEffect?: boolean
+  wAuto?: boolean
+  shadow?: boolean
   onClick?: (event: MouseEvent) => void
 }
 
@@ -46,16 +42,17 @@ export const Button: React.FC<PropButton> = (props) => {
     iconRight,
     icon,
     buttonStyle = BUTTON_STYLE.DEFAULT,
-    isIconFit = false,
-    isDisabled = false,
-    isLoading = false,
-    isRounded = false,
-    isRipple = true,
-    isAutoWidth = true,
+    iconFit = false,
+    disabled = false,
+    loading = false,
+    rounded = false,
+    rippleEffect = true,
+    wAuto = false,
+    shadow,
     onClick,
   } = props
 
-  const createRippleEffect = (event: MouseEvent, _color: COLOR) => {
+  const createRippleEffect = (event: MouseEvent) => {
     const button = event.currentTarget as EventTarget &
       Element & { offsetLeft: number; offsetTop: number }
 
@@ -69,27 +66,7 @@ export const Button: React.FC<PropButton> = (props) => {
     circle.classList.add('ripple')
 
     if (buttonStyle !== BUTTON_STYLE.DEFAULT) {
-      switch (_color) {
-        case COLOR.SECONDARY:
-          circle.classList.add('bg-secondary-default')
-          break
-        case COLOR.SUCCESS:
-          circle.classList.add('bg-success-default')
-          break
-        case COLOR.WARNING:
-          circle.classList.add('bg-warning-default')
-          break
-        case COLOR.INFO:
-          circle.classList.add('bg-info-default')
-          break
-        case COLOR.DANGER:
-          circle.classList.add('bg-danger-default')
-          break
-        case COLOR.PRIMARY:
-        default:
-          circle.classList.add('bg-primary-default')
-          break
-      }
+      circle.classList.add(`btn__bg-${color.toLowerCase()}`)
     } else {
       circle.classList.add('bg-black')
     }
@@ -103,154 +80,89 @@ export const Button: React.FC<PropButton> = (props) => {
     button.appendChild(circle)
   }
 
-  const renderSize = (_size: SIZE) => {
-    switch (_size) {
-      case SIZE.XS:
-        return clsx(
-          'h-6 px-2 text-xs font-semibold',
-          !isAutoWidth && 'w-20',
-          !isRounded && 'rounded-xl',
-        )
+  const isDisabled = () => disabled || loading
 
-      case SIZE.SM:
-        return clsx(
-          'h-8 px-2 text-sm font-semibold',
-          !isAutoWidth && 'w-36',
-          !isRounded && 'rounded-xl',
-        )
+  const renderCursor = () => (disabled || loading) && 'cursor-not-allowed'
+  const renderDisabled = () => (disabled || loading) && 'btn__disabled'
+  const renderRounded = () => rounded && 'btn__rounded'
+  const renderAutoWidth = () => wAuto && 'btn__auto-w'
+  const renderSize = () => `btn__${size.toLowerCase()}`
 
-      case SIZE.LG:
-        return clsx(
-          'h-11 px-6 text-lg font-bold',
-          !isAutoWidth && 'w-60',
-          !isRounded && 'rounded-xl',
-        )
+  const renderColor = () => {
+    const _color = color.toLowerCase()
+    const _style = buttonStyle.toLowerCase()
 
-      case SIZE.XL:
-        return clsx(
-          'h-14 px-6 text-xl font-bold',
-          !isAutoWidth && 'w-72',
-          !isRounded && 'rounded-xl',
-        )
+    if (disabled) {
+      if (buttonStyle === BUTTON_STYLE.LIGHT) {
+        return `btn__${_color}-light-disabled`
+      }
 
-      case SIZE.MD:
-      default:
-        return clsx(
-          'h-10 px-4 text-base font-semibold',
-          !isAutoWidth && 'w-48',
-          !isRounded && 'rounded-xl',
-        )
+      return `btn__${_color}-disabled`
     }
-  }
 
-  const renderColor = (_color: COLOR) => {
-    switch (_color) {
-      case COLOR.SECONDARY:
-        return renderSecondaryClass(props)
-
-      case COLOR.SUCCESS:
-        return renderSuccessClass(props)
-
-      case COLOR.WARNING:
-        return renderWarningClass(props)
-
-      case COLOR.INFO:
-        return renderInfoClass(props)
-
-      case COLOR.DANGER:
-        return renderDangerClass(props)
-
-      case COLOR.PRIMARY:
-      default:
-        return renderPrimaryClass(props)
+    if (buttonStyle === BUTTON_STYLE.DEFAULT) {
+      return clsx(
+        `btn__${_color}`,
+        loading && `btn__${_color}-loading`,
+        shadow && `btn__${_color}-shadow`,
+      )
     }
+
+    return clsx(
+      `btn__${_color}-${_style}`,
+      loading && `btn__${_color}-${_style}-loading`,
+    )
   }
 
   const renderIcon = (_icon: string, position: 'left' | 'right') => {
-    const iconName = Object.keys(AllIcon).find(
-      (_iconName) => _iconName === _icon,
+    const Icon = AllIcon[_icon as keyof typeof AllIcon]
+
+    const isLeft = position === 'left'
+
+    const classWidthIcon = label ? 'w-8' : 'w-6'
+    let classPaddingIcon = ''
+
+    if (label) {
+      classPaddingIcon = isLeft ? 'pr-2' : 'pl-2'
+    }
+
+    const classIcon = clsx(
+      classWidthIcon,
+      classPaddingIcon,
+      iconFit && 'absolute',
+      iconFit && isLeft ? 'left-4' : 'right-4',
     )
 
-    if (iconName) {
-      const Icon = AllIcon[iconName as 'ArchiveIcon']
-
-      const isLeft = position === 'left'
-
-      const classWidthIcon = label ? 'w-8' : 'w-6'
-      let classPaddingIcon = ''
-
-      if (label) {
-        classPaddingIcon = isLeft ? 'pr-2' : 'pl-2'
-      }
-
-      const classIcon = clsx(
-        classWidthIcon,
-        classPaddingIcon,
-        isIconFit && 'absolute',
-        isIconFit && isLeft ? 'left-4' : 'right-4',
-      )
-
-      return <Icon className={classIcon} />
-    }
+    return <Icon className={classIcon} />
   }
 
-  const renderLoading = () => {
-    return (
+  const renderChild = () =>
+    loading ? (
       <Loading loaderStyle={LOADING_STYLE.DASH} color={LOADING_COLOR.WHITE} />
-    )
-  }
-
-  const renderCursor = () => {
-    if (isDisabled || isLoading) {
-      return 'cursor-not-allowed'
-    }
-  }
-
-  const renderRounded = () => {
-    if (isRounded) {
-      return 'rounded-full'
-    }
-  }
-
-  const renderScaleSize = () => {
-    if (!isLoading && !isDisabled) {
-      return 'active:scale-95'
-    }
-  }
-
-  const renderDisabled = () => {
-    return isDisabled || isLoading
-  }
-
-  const renderChild = () => {
-    if (isLoading) {
-      return renderLoading()
-    }
-
-    return (
+    ) : (
       <>
         {icon && <>{renderIcon(icon, 'left')}</>}
         {label}
         {iconRight && <>{renderIcon(iconRight, 'right')}</>}
       </>
     )
-  }
 
   return (
     <button
       className={clsx(
-        'relative flex justify-center items-center overflow-hidden transition-colors',
-        renderScaleSize(),
-        renderRounded(),
+        'btn',
         renderCursor(),
-        renderSize(size),
-        renderColor(color),
+        renderDisabled(),
+        renderRounded(),
+        renderAutoWidth(),
+        renderSize(),
+        renderColor(),
       )}
       style={{ ...(width && { width }) }}
-      disabled={renderDisabled()}
+      disabled={isDisabled()}
       onClick={(event) => {
-        if (isRipple) {
-          createRippleEffect(event, color)
+        if (rippleEffect) {
+          createRippleEffect(event)
         }
 
         if (onClick) {

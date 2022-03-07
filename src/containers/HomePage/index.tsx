@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
       </h2>
       <div>
         <div>
-          <Button label='Go to Calculator' isLoading isDisabled />
+          <Button label='Go to Calculator' loading disabled />
         </div>
         <div>
           {' '}

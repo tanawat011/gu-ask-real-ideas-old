@@ -1,0 +1,123 @@
+$theme-colors: 'primary', 'secondary', 'success', 'info', 'warning', 'danger';
+
+.btn {
+  @apply relative flex justify-center items-center overflow-hidden transition-colors active:scale-95;
+
+  &__disabled {
+    @apply active:scale-100;
+  }
+
+  &__rounded {
+    @apply rounded-full #{!important};
+  }
+
+  &__auto-w {
+    @apply w-auto #{!important};
+  }
+
+  &__xs {
+    @apply h-6 w-20 px-2 text-xs font-semibold rounded-lg;
+  }
+
+  &__sm {
+    @apply h-8 w-36 px-2 text-sm font-semibold rounded-lg;
+  }
+
+  &__md {
+    @apply h-10 w-48 px-4 text-base font-semibold rounded-xl;
+  }
+
+  &__lg {
+    @apply h-11 w-60 px-6 text-lg font-bold rounded-xl;
+  }
+
+  &__xl {
+    @apply h-14 w-72 px-6 text-xl font-bold rounded-2xl;
+  }
+
+  @each $theme-color in $theme-colors {
+    &__bg-#{$theme-color} {
+      @apply bg-#{$theme-color}-default;
+    }
+
+    &__#{$theme-color} {
+      @apply bg-#{$theme-color}-default text-white active:bg-#{$theme-color}-pressed hover:bg-#{$theme-color}-hover;
+
+      &-loading {
+        @apply active:bg-#{$theme-color}-default hover:bg-#{$theme-color}-default;
+      }
+
+      &-disabled {
+        @apply active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
+      }
+
+      &-shadow {
+        @apply shadow-nextui shadow-#{$theme-color}-default;
+      }
+    }
+
+    &__#{$theme-color}-outline {
+      @apply bg-transparent border-solid border-2 border-#{$theme-color}-default text-#{$theme-color}-default active:opacity-80 hover:opacity-80;
+
+      &-loading {
+        @apply active:opacity-100 hover:opacity-100;
+      }
+
+      &-disabled {
+        @apply active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
+      }
+
+      &-shadow {
+        @apply shadow-nextui shadow-#{$theme-color}-default;
+      }
+    }
+
+    &__#{$theme-color}-ghost {
+      @apply bg-transparent border-solid border-2 border-#{$theme-color}-default text-#{$theme-color}-default active:bg-#{$theme-color}-default hover:text-white hover:bg-#{$theme-color}-default;
+
+      &-loading {
+        @apply active:bg-transparent hover:bg-transparent;
+      }
+
+      &-disabled {
+        @apply active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
+      }
+
+      &-shadow {
+        @apply shadow-nextui shadow-#{$theme-color}-default;
+      }
+    }
+
+    &__#{$theme-color}-flat {
+      @apply bg-#{$theme-color}-default-flat text-#{$theme-color}-default active:hover:opacity-80 hover:hover:opacity-80;
+
+      &-loading {
+        @apply active:hover:opacity-100 hover:hover:opacity-100;
+      }
+
+      &-disabled {
+        @apply active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
+      }
+
+      &-shadow {
+        @apply shadow-nextui shadow-#{$theme-color}-default;
+      }
+    }
+
+    &__#{$theme-color}-light {
+      @apply bg-transparent text-#{$theme-color}-default active:hover:opacity-80 hover:hover:opacity-80;
+
+      &-loading {
+        @apply active:hover:opacity-100 hover:hover:opacity-100;
+      }
+
+      &-disabled {
+        @apply active:bg-transparent hover:bg-transparent disabled:bg-transparent text-nextui-gray-600;
+      }
+
+      &-shadow {
+        @apply shadow-nextui shadow-#{$theme-color}-default;
+      }
+    }
+  }
+}

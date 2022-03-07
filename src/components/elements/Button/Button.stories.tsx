@@ -12,27 +12,27 @@ const ButtonSizeAssembleComponent: React.FC<
   return (
     <div className=''>
       <div className={classCard}>
-        <Button label='Mini' {...props} size={SIZE.XS} isAutoWidth={false} />
+        <Button label='Mini' {...props} size={SIZE.XS} />
       </div>
 
       <div className={classCard}>
-        <Button label='Small' {...props} size={SIZE.SM} isAutoWidth={false} />
+        <Button label='Small' {...props} size={SIZE.SM} />
       </div>
 
       <div className={classCard}>
-        <Button label='Medium' {...props} size={SIZE.MD} isAutoWidth={false} />
+        <Button label='Medium' {...props} size={SIZE.MD} />
       </div>
 
       <div className={classCard}>
-        <Button label='Large' {...props} size={SIZE.LG} isAutoWidth={false} />
+        <Button label='Large' {...props} size={SIZE.LG} />
       </div>
 
       <div className={classCard}>
-        <Button label='XLarge' {...props} size={SIZE.XL} isAutoWidth={false} />
+        <Button label='XLarge' {...props} size={SIZE.XL} />
       </div>
 
       <div className={classCard}>
-        <Button label='Auto width' {...props} isAutoWidth />
+        <Button label='Auto width' {...props} wAuto />
       </div>
 
       <div className={classCard}>
@@ -66,7 +66,8 @@ const ButtonAssembleComponent: React.FC<
             label='Primary'
             {...props}
             color={COLOR.PRIMARY}
-            {...(props.isLoading && { width: 91.69 })}
+            {...(props.loading && { width: 91.69 })}
+            wAuto
           />
         </div>
 
@@ -75,7 +76,8 @@ const ButtonAssembleComponent: React.FC<
             label='Secondary'
             {...props}
             color={COLOR.SECONDARY}
-            {...(props.isLoading && { width: 110.91 })}
+            {...(props.loading && { width: 110.91 })}
+            wAuto
           />
         </div>
 
@@ -84,7 +86,8 @@ const ButtonAssembleComponent: React.FC<
             label='Success'
             {...props}
             color={COLOR.SUCCESS}
-            {...(props.isLoading && { width: 88.75 })}
+            {...(props.loading && { width: 88.75 })}
+            wAuto
           />
         </div>
 
@@ -93,7 +96,8 @@ const ButtonAssembleComponent: React.FC<
             label='Warning'
             {...props}
             color={COLOR.WARNING}
-            {...(props.isLoading && { width: 96.28 })}
+            {...(props.loading && { width: 96.28 })}
+            wAuto
           />
         </div>
 
@@ -102,7 +106,8 @@ const ButtonAssembleComponent: React.FC<
             label='Info'
             {...props}
             color={COLOR.INFO}
-            {...(props.isLoading && { width: 62.67 })}
+            {...(props.loading && { width: 62.67 })}
+            wAuto
           />
         </div>
 
@@ -111,7 +116,8 @@ const ButtonAssembleComponent: React.FC<
             label='Danger'
             {...props}
             color={COLOR.DANGER}
-            {...(props.isLoading && { width: 87.02 })}
+            {...(props.loading && { width: 87.02 })}
+            wAuto
           />
         </div>
       </div>
@@ -156,16 +162,16 @@ const ButtonAssembleTemplate: ComponentStory<typeof Button> = (props) => (
 export const Color = ButtonAssembleTemplate.bind({})
 export const Shadow = ButtonAssembleTemplate.bind({})
 Shadow.args = {
-  hasShadow: true,
+  shadow: true,
 }
 export const Disabled = ButtonAssembleTemplate.bind({})
 Disabled.args = {
-  isDisabled: true,
+  disabled: true,
 }
 export const Rounded = ButtonAssembleTemplate.bind({})
 Rounded.args = {
   buttonStyle: BUTTON_STYLE.OUTLINE,
-  isRounded: true,
+  rounded: true,
 }
 export const OutlineStyle = ButtonAssembleTemplate.bind({})
 OutlineStyle.args = {
@@ -174,7 +180,7 @@ OutlineStyle.args = {
 export const GhostStyle = ButtonAssembleTemplate.bind({})
 GhostStyle.args = {
   buttonStyle: BUTTON_STYLE.GHOST,
-  isRounded: true,
+  rounded: true,
 }
 export const FlatStyle = ButtonAssembleTemplate.bind({})
 FlatStyle.args = {
@@ -183,7 +189,7 @@ FlatStyle.args = {
 export const LightStyle = ButtonAssembleTemplate.bind({})
 LightStyle.args = {
   buttonStyle: BUTTON_STYLE.LIGHT,
-  isRounded: true,
+  rounded: true,
 }
 
 const AllButtonAssembleTemplate: ComponentStory<typeof Button> = (props) => (
@@ -225,23 +231,23 @@ AllIcons.args = {
 
 export const AllLoading = AllButtonAssembleTemplate.bind({})
 AllLoading.args = {
-  isLoading: true,
+  loading: true,
 }
 
 export const AllDisabled = AllButtonAssembleTemplate.bind({})
 AllDisabled.args = {
-  isDisabled: true,
+  disabled: true,
 }
 
 export const AllDisabledWithOnlyIcon = AllButtonAssembleTemplate.bind({})
 AllDisabledWithOnlyIcon.args = {
   label: '',
   icon: 'ArchiveIcon',
-  isDisabled: true,
+  disabled: true,
 }
 
 export const AllDisabledWithIcon = AllButtonAssembleTemplate.bind({})
 AllDisabledWithIcon.args = {
   icon: 'ArchiveIcon',
-  isDisabled: true,
+  disabled: true,
 }
