@@ -1,6 +1,5 @@
 import { MouseEvent } from 'react'
 import * as _AllIcon from '@heroicons/react/solid'
-// import { ArchiveIcon } from '@heroicons/react/solid'
 
 import {
   BUTTON_STYLE,

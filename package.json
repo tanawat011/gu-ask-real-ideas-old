@@ -22,7 +22,7 @@
     "prepare": "husky install",
     "solve:pre:commit:not-exec": "chmod ug+x .husky/*",
     "pre:commit": "yarn lint && yarn lint:css && yarn build",
-    "pre:push": "yarn test:cv:msg",
+    "pre:push": "yarn test",
     "tw:view": "tailwind-config-viewer serve",
     "tw:export": "tailwind-config-viewer export ./tailwindViewer"
   },
