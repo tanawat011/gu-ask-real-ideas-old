@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button } from '@element/Button'
 import { ButtonGroup } from '@element/ButtonGroup'
-import { SIZE } from '@constants'
 
 export default {
   title: 'ButtonGroup',
