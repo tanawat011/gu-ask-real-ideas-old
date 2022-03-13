@@ -4,14 +4,26 @@
   display: flex;
 
   @each $theme-color in $theme-colors {
+    &-#{$theme-color}-shadow {
+      @apply shadow-nextui shadow-#{$theme-color}-default #{!important};
+    }
+
     &-vertical#{&} {
       button:not(:first-child) {
         &.btn__#{$theme-color}-outline {
           @apply border-t-0 border-l-2;
+
+          &-disabled {
+            @apply border-t-0 border-l-2;
+          }
         }
 
         &.btn__#{$theme-color}-ghost {
           @apply border-t-0 border-l-2;
+
+          &-disabled {
+            @apply border-t-0 border-l-2;
+          }
         }
       }
     }
@@ -19,10 +31,18 @@
     button:not(:first-child) {
       &.btn__#{$theme-color}-outline {
         @apply border-l-0;
+
+        &-disabled {
+          @apply border-l-0;
+        }
       }
 
       &.btn__#{$theme-color}-ghost {
         @apply border-l-0;
+
+        &-disabled {
+          @apply border-l-0;
+        }
       }
     }
   }

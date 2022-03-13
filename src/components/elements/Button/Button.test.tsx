@@ -1,7 +1,7 @@
 import { ArchiveIcon } from '@heroicons/react/solid'
 import { render } from '@testing-library/react'
 
-import { BUTTON_STYLE, COLOR, SIZE } from '@constants'
+import { BUTTON_STYLE, VARIANT, SIZE } from '@constants'
 import { Button } from '@element/Button'
 
 describe('<Button />', () => {
@@ -14,7 +14,7 @@ describe('<Button />', () => {
 
     const { asFragment } = render(
       <Button
-        color={COLOR.PRIMARY}
+        variant={VARIANT.PRIMARY}
         size={SIZE.MD}
         icon={<ArchiveIcon />}
         label='Button A'
@@ -290,38 +290,38 @@ describe('<Button />', () => {
     })
   })
 
-  Object.keys(COLOR).forEach((color) => {
+  Object.keys(VARIANT).forEach((variant) => {
     Object.keys(BUTTON_STYLE).forEach((style) => {
       const _postfixStyle = style === 'DEFAULT' ? '' : `-${style.toLowerCase()}`
       const disabledClass =
         style !== 'DEFAULT'
-          ? `btn__${color.toLowerCase()}-${style.toLowerCase()}-disabled`
-          : `btn__${color.toLowerCase()}-disabled`
+          ? `btn__${variant.toLowerCase()}-${style.toLowerCase()}-disabled`
+          : `btn__${variant.toLowerCase()}-disabled`
 
-      it(`should be ${color.toLowerCase()} button, ${style.toLowerCase()} button`, async () => {
+      it(`should be ${variant.toLowerCase()} button, ${style.toLowerCase()} button`, async () => {
         expect.assertions(1)
 
         const { findByRole } = render(
           <Button
-            color={COLOR[color as keyof typeof COLOR]}
-            buttonStyle={BUTTON_STYLE[style as keyof typeof BUTTON_STYLE]}
+            variant={VARIANT[variant as keyof typeof VARIANT]}
+            btnStyle={BUTTON_STYLE[style as keyof typeof BUTTON_STYLE]}
           />,
         )
 
         const button = await findByRole('button')
 
         expect(button).toHaveClass(
-          `btn__${color.toLowerCase()}${_postfixStyle}`,
+          `btn__${variant.toLowerCase()}${_postfixStyle}`,
         )
       })
 
-      it(`should be ${color.toLowerCase()} button, ${style.toLowerCase()} button, disabled button`, async () => {
+      it(`should be ${variant.toLowerCase()} button, ${style.toLowerCase()} button, disabled button`, async () => {
         expect.assertions(2)
 
         const { findByRole } = render(
           <Button
-            color={COLOR[color as keyof typeof COLOR]}
-            buttonStyle={BUTTON_STYLE[style as keyof typeof BUTTON_STYLE]}
+            variant={VARIANT[variant as keyof typeof VARIANT]}
+            btnStyle={BUTTON_STYLE[style as keyof typeof BUTTON_STYLE]}
             disabled
           />,
         )
@@ -332,13 +332,13 @@ describe('<Button />', () => {
         expect(button).toHaveClass(disabledClass)
       })
 
-      it(`should be ${color.toLowerCase()} button, ${style.toLowerCase()} button, loading button`, async () => {
+      it(`should be ${variant.toLowerCase()} button, ${style.toLowerCase()} button, loading button`, async () => {
         expect.assertions(2)
 
         const { findByRole } = render(
           <Button
-            color={COLOR[color as keyof typeof COLOR]}
-            buttonStyle={BUTTON_STYLE[style as keyof typeof BUTTON_STYLE]}
+            variant={VARIANT[variant as keyof typeof VARIANT]}
+            btnStyle={BUTTON_STYLE[style as keyof typeof BUTTON_STYLE]}
             loading
           />,
         )
@@ -347,17 +347,17 @@ describe('<Button />', () => {
 
         expect(button.children[0].children[0].nodeName).toBe('svg')
         expect(button).toHaveClass(
-          `btn__${color.toLowerCase()}${_postfixStyle}-loading`,
+          `btn__${variant.toLowerCase()}${_postfixStyle}-loading`,
         )
       })
 
-      it(`should be ${color.toLowerCase()} button, ${style.toLowerCase()} button, ripple effect button`, async () => {
+      it(`should be ${variant.toLowerCase()} button, ${style.toLowerCase()} button, ripple effect button`, async () => {
         expect.assertions(2)
 
         const { findByRole } = render(
           <Button
-            color={COLOR[color as keyof typeof COLOR]}
-            buttonStyle={BUTTON_STYLE.OUTLINE}
+            variant={VARIANT[variant as keyof typeof VARIANT]}
+            btnStyle={BUTTON_STYLE.OUTLINE}
             label='Test'
             rippleEffect
           />,
@@ -369,7 +369,9 @@ describe('<Button />', () => {
         button.click() // Click again for test old ripple effect removed and re-assign
 
         expect(button.children[0]).toHaveClass('ripple')
-        expect(button.children[0]).toHaveClass(`btn__bg-${color.toLowerCase()}`)
+        expect(button.children[0]).toHaveClass(
+          `btn__bg-${variant.toLowerCase()}`,
+        )
       })
     })
   })

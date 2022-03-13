@@ -1,4 +1,4 @@
-export enum COLOR {
+export enum VARIANT {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   SUCCESS = 'success',

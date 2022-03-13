@@ -26,6 +26,8 @@
       "@hook/*": ["hooks/*"],
       "@icon/*": ["assets/icons/*"],
       "@layout/*": ["components/layouts/*"],
+      "@helpers": ["helpers"],
+      "@helper/*": ["helpers/*"],
       "@libs": ["libs"],
       "@lib/*": ["libs/*"],
       "@util/*": ["utils/*"]

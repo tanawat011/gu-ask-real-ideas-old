@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/solid'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { BUTTON_STYLE, COLOR, SIZE } from '@constants'
+import { BUTTON_STYLE, VARIANT, SIZE } from '@constants'
 import { Button } from '@element/Button'
 
 const ButtonSizeAssembleComponent: React.FC<
@@ -70,7 +70,7 @@ const ButtonAssembleComponent: React.FC<
           <Button
             label='Primary'
             {...props}
-            color={COLOR.PRIMARY}
+            variant={VARIANT.PRIMARY}
             {...(props.loading && { width: 91.69 })}
             wAuto
           />
@@ -80,7 +80,7 @@ const ButtonAssembleComponent: React.FC<
           <Button
             label='Secondary'
             {...props}
-            color={COLOR.SECONDARY}
+            variant={VARIANT.SECONDARY}
             {...(props.loading && { width: 110.91 })}
             wAuto
           />
@@ -90,7 +90,7 @@ const ButtonAssembleComponent: React.FC<
           <Button
             label='Success'
             {...props}
-            color={COLOR.SUCCESS}
+            variant={VARIANT.SUCCESS}
             {...(props.loading && { width: 88.75 })}
             wAuto
           />
@@ -100,7 +100,7 @@ const ButtonAssembleComponent: React.FC<
           <Button
             label='Warning'
             {...props}
-            color={COLOR.WARNING}
+            variant={VARIANT.WARNING}
             {...(props.loading && { width: 96.28 })}
             wAuto
           />
@@ -110,7 +110,7 @@ const ButtonAssembleComponent: React.FC<
           <Button
             label='Info'
             {...props}
-            color={COLOR.INFO}
+            variant={VARIANT.INFO}
             {...(props.loading && { width: 62.67 })}
             wAuto
           />
@@ -120,7 +120,7 @@ const ButtonAssembleComponent: React.FC<
           <Button
             label='Danger'
             {...props}
-            color={COLOR.DANGER}
+            variant={VARIANT.DANGER}
             {...(props.loading && { width: 87.02 })}
             wAuto
           />
@@ -131,10 +131,17 @@ const ButtonAssembleComponent: React.FC<
 }
 
 const IconMapping = {
-  '': '',
+  '-': '',
   ArchiveIcon: <ArchiveIcon />,
   AnnotationIcon: <AnnotationIcon />,
   AdjustmentsIcon: <AdjustmentsIcon />,
+}
+const iconOptions = {
+  options: Object.keys(IconMapping),
+  mapping: { ...IconMapping },
+  control: {
+    type: 'select',
+  },
 }
 
 export default {
@@ -156,35 +163,13 @@ export default {
         type: 'select',
       },
     },
-    buttonStyle: {
+    btnStyle: {
       control: {
         type: 'select',
       },
     },
-    icon: {
-      table: {
-        type: {
-          summary: 'React.ReactNode',
-        },
-      },
-      mapping: { ...IconMapping },
-      control: {
-        type: 'select',
-        options: Object.keys(IconMapping),
-      },
-    },
-    iconRight: {
-      table: {
-        type: {
-          summary: 'React.ReactNode',
-        },
-      },
-      mapping: { ...IconMapping },
-      control: {
-        type: 'select',
-        options: Object.keys(IconMapping),
-      },
-    },
+    icon: iconOptions,
+    iconRight: iconOptions,
   },
 } as ComponentMeta<typeof Button>
 
@@ -193,8 +178,11 @@ const Template: ComponentStory<typeof Button> = (props) => (
 )
 
 export const DefaultButton = Template.bind({})
-DefaultButton.story = {
-  name: 'Default',
+DefaultButton.storyName = 'Default'
+
+export const Gradient = Template.bind({})
+Gradient.args = {
+  gradients: ['primary-default', 'danger-default'],
 }
 
 const ButtonSizeAssembleTemplate: ComponentStory<typeof Button> = (props) => (
@@ -207,36 +195,40 @@ const ButtonAssembleTemplate: ComponentStory<typeof Button> = (props) => (
   <ButtonAssembleComponent {...props} />
 )
 
-export const Color = ButtonAssembleTemplate.bind({})
+export const Variant = ButtonAssembleTemplate.bind({})
 export const Shadow = ButtonAssembleTemplate.bind({})
 Shadow.args = {
   shadow: true,
+}
+export const Rounded = ButtonAssembleTemplate.bind({})
+Rounded.args = {
+  btnStyle: BUTTON_STYLE.OUTLINE,
+  rounded: true,
+}
+export const Loading = ButtonAssembleTemplate.bind({})
+Loading.args = {
+  loading: true,
 }
 export const Disabled = ButtonAssembleTemplate.bind({})
 Disabled.args = {
   disabled: true,
 }
-export const Rounded = ButtonAssembleTemplate.bind({})
-Rounded.args = {
-  buttonStyle: BUTTON_STYLE.OUTLINE,
-  rounded: true,
-}
 export const OutlineStyle = ButtonAssembleTemplate.bind({})
 OutlineStyle.args = {
-  buttonStyle: BUTTON_STYLE.OUTLINE,
+  btnStyle: BUTTON_STYLE.OUTLINE,
 }
 export const GhostStyle = ButtonAssembleTemplate.bind({})
 GhostStyle.args = {
-  buttonStyle: BUTTON_STYLE.GHOST,
+  btnStyle: BUTTON_STYLE.GHOST,
   rounded: true,
 }
 export const FlatStyle = ButtonAssembleTemplate.bind({})
 FlatStyle.args = {
-  buttonStyle: BUTTON_STYLE.FLAT,
+  btnStyle: BUTTON_STYLE.FLAT,
 }
 export const LightStyle = ButtonAssembleTemplate.bind({})
 LightStyle.args = {
-  buttonStyle: BUTTON_STYLE.LIGHT,
+  btnStyle: BUTTON_STYLE.LIGHT,
   rounded: true,
 }
 
@@ -245,57 +237,57 @@ const AllButtonAssembleTemplate: ComponentStory<typeof Button> = (props) => (
     <ButtonAssembleComponent {...props} title='Default style' />
     <ButtonAssembleComponent
       {...props}
-      buttonStyle={BUTTON_STYLE.OUTLINE}
+      btnStyle={BUTTON_STYLE.OUTLINE}
       title='Outline style'
     />
     <ButtonAssembleComponent
       {...props}
-      buttonStyle={BUTTON_STYLE.GHOST}
+      btnStyle={BUTTON_STYLE.GHOST}
       title='Ghost style'
     />
     <ButtonAssembleComponent
       {...props}
-      buttonStyle={BUTTON_STYLE.FLAT}
+      btnStyle={BUTTON_STYLE.FLAT}
       title='Flat style'
     />
     <ButtonAssembleComponent
       {...props}
-      buttonStyle={BUTTON_STYLE.LIGHT}
+      btnStyle={BUTTON_STYLE.LIGHT}
       title='Light style'
     />
   </>
 )
 
-export const AllOnlyIcons = AllButtonAssembleTemplate.bind({})
-AllOnlyIcons.args = {
+export const IconOnly = AllButtonAssembleTemplate.bind({})
+IconOnly.args = {
   label: '',
   icon: <ArchiveIcon />,
 }
 
-export const AllIcons = AllButtonAssembleTemplate.bind({})
-AllIcons.args = {
+export const WithIcon = AllButtonAssembleTemplate.bind({})
+WithIcon.args = {
   icon: <ArchiveIcon />,
 }
 
-export const AllLoading = AllButtonAssembleTemplate.bind({})
-AllLoading.args = {
+export const Loadings = AllButtonAssembleTemplate.bind({})
+Loadings.args = {
   loading: true,
 }
 
-export const AllDisabled = AllButtonAssembleTemplate.bind({})
-AllDisabled.args = {
+export const Disables = AllButtonAssembleTemplate.bind({})
+Disables.args = {
   disabled: true,
 }
 
-export const AllDisabledWithOnlyIcon = AllButtonAssembleTemplate.bind({})
-AllDisabledWithOnlyIcon.args = {
-  label: '',
+export const DisableWithIcon = AllButtonAssembleTemplate.bind({})
+DisableWithIcon.args = {
   icon: <ArchiveIcon />,
   disabled: true,
 }
 
-export const AllDisabledWithIcon = AllButtonAssembleTemplate.bind({})
-AllDisabledWithIcon.args = {
+export const DisablesWithIconOnly = AllButtonAssembleTemplate.bind({})
+DisablesWithIconOnly.args = {
+  label: '',
   icon: <ArchiveIcon />,
   disabled: true,
 }

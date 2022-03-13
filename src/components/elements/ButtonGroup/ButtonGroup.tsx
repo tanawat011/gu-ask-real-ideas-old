@@ -8,6 +8,8 @@ export type PropButtonGroup = {
 } & PropButton
 
 export const ButtonGroup: React.FC<PropButtonGroup> = (props) => {
+  const { vertical } = props
+
   const children = React.Children.map(props.children, (child) => {
     if (!React.isValidElement(child)) {
       return child
@@ -24,9 +26,7 @@ export const ButtonGroup: React.FC<PropButtonGroup> = (props) => {
   })
 
   return (
-    <div
-      className={clsx('btn__group', props.vertical && 'btn__group-vertical')}
-    >
+    <div className={clsx('btn__group', vertical && 'btn__group-vertical')}>
       {children}
     </div>
   )

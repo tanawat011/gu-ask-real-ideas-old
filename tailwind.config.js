@@ -164,6 +164,8 @@ module.exports = {
       },
       scale: {
         97: '0.97',
+        98: '0.98',
+        99: '0.99',
       },
       transitionProperty: {
         ...defaultTheme.transitionProperty,

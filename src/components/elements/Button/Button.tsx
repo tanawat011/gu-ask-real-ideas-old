@@ -2,20 +2,22 @@ import { MouseEvent, cloneElement } from 'react'
 
 import {
   BUTTON_STYLE,
-  COLOR,
+  VARIANT,
   LOADING_COLOR,
   LOADING_STYLE,
   SIZE,
 } from '@constants'
 import { Loading } from '@element/Loader'
+import { RegEx } from '@helpers'
 import { clsx } from '@libs'
 
 export type PropButton = {
   width?: number
   label?: string
   size?: SIZE
-  color?: COLOR
-  buttonStyle?: BUTTON_STYLE
+  variant?: VARIANT
+  gradients?: [string, string, string] | [string, string] | [string]
+  btnStyle?: BUTTON_STYLE
   icon?: React.ReactElement
   iconRight?: React.ReactElement
   iconFit?: boolean
@@ -33,10 +35,11 @@ export const Button: React.FC<PropButton> = (props) => {
     width,
     label,
     size = SIZE.MD,
-    color = COLOR.PRIMARY,
-    iconRight,
+    variant = VARIANT.PRIMARY,
+    gradients,
     icon,
-    buttonStyle = BUTTON_STYLE.DEFAULT,
+    iconRight,
+    btnStyle = BUTTON_STYLE.DEFAULT,
     iconFit = false,
     disabled = false,
     loading = false,
@@ -60,8 +63,8 @@ export const Button: React.FC<PropButton> = (props) => {
     circle.style.top = `${event.clientY - button.offsetTop - radius}px`
     circle.classList.add('ripple')
 
-    if (buttonStyle !== BUTTON_STYLE.DEFAULT) {
-      circle.classList.add(`btn__bg-${color.toLowerCase()}`)
+    if (btnStyle !== BUTTON_STYLE.DEFAULT) {
+      circle.classList.add(`btn__bg-${variant.toLowerCase()}`)
     } else {
       circle.classList.add('bg-black')
     }
@@ -83,29 +86,54 @@ export const Button: React.FC<PropButton> = (props) => {
   const renderAutoWidth = () => wAuto && 'btn__auto-w'
   const renderSize = () => `btn__${size.toLowerCase()}`
 
-  const renderColor = () => {
-    const _color = color.toLowerCase()
-    const _style = buttonStyle.toLowerCase()
+  const renderVariant = () => {
+    const _variant = variant.toLowerCase()
+    const _style = btnStyle.toLowerCase()
 
     if (disabled) {
-      if (buttonStyle === BUTTON_STYLE.DEFAULT) {
-        return `btn__${_color}-disabled`
+      if (btnStyle === BUTTON_STYLE.DEFAULT) {
+        return `btn__${_variant}-disabled`
       }
 
-      return `btn__${_color}-${_style}-disabled`
+      return `btn__${_variant}-${_style}-disabled`
     }
 
-    if (buttonStyle === BUTTON_STYLE.DEFAULT) {
+    if (gradients) {
+      const gFirst = `from-${
+        RegEx.colorHex.test(gradients[0]) ? `[${gradients[0]}]` : gradients[0]
+      }`
+      let gSecond = ''
+      let gThird = ''
+
+      if (gradients.length === 2) {
+        gSecond = `to-${
+          RegEx.colorHex.test(gradients[1]) ? `[${gradients[1]}]` : gradients[1]
+        }`
+      }
+
+      if (gradients.length === 3) {
+        gSecond = `via-${
+          RegEx.colorHex.test(gradients[1]) ? `[${gradients[1]}]` : gradients[1]
+        }`
+        gThird = `to-${
+          RegEx.colorHex.test(gradients[2]) ? `[${gradients[2]}]` : gradients[2]
+        }`
+      }
+
+      return clsx('bg-gradient-to-r', gFirst, gSecond, gThird)
+    }
+
+    if (btnStyle === BUTTON_STYLE.DEFAULT) {
       return clsx(
-        `btn__${_color}`,
-        loading && `btn__${_color}-loading`,
-        shadow && `btn__${_color}-shadow`,
+        `btn__${_variant}`,
+        loading && `btn__${_variant}-loading`,
+        shadow && `btn__${_variant}-shadow`,
       )
     }
 
     return clsx(
-      `btn__${_color}-${_style}`,
-      loading && `btn__${_color}-${_style}-loading`,
+      `btn__${_variant}-${_style}`,
+      loading && `btn__${_variant}-${_style}-loading`,
     )
   }
 
@@ -157,7 +185,7 @@ export const Button: React.FC<PropButton> = (props) => {
         renderRounded(),
         renderAutoWidth(),
         renderSize(),
-        renderColor(),
+        renderVariant(),
       )}
       style={{ ...(width && { width }) }}
       disabled={isDisabled()}
