@@ -1,4 +1,9 @@
 import clsx from 'clsx'
+import {
+  ArchiveIcon,
+  AnnotationIcon,
+  AdjustmentsIcon,
+} from '@heroicons/react/solid'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { BUTTON_STYLE, COLOR, SIZE } from '@constants'
@@ -125,6 +130,13 @@ const ButtonAssembleComponent: React.FC<
   )
 }
 
+const IconMapping = {
+  '': '',
+  ArchiveIcon: <ArchiveIcon />,
+  AnnotationIcon: <AnnotationIcon />,
+  AdjustmentsIcon: <AdjustmentsIcon />,
+}
+
 export default {
   title: 'Button',
   component: Button,
@@ -136,6 +148,42 @@ export default {
         `,
       },
       page: null,
+    },
+  },
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+      },
+    },
+    buttonStyle: {
+      control: {
+        type: 'select',
+      },
+    },
+    icon: {
+      table: {
+        type: {
+          summary: 'React.ReactNode',
+        },
+      },
+      mapping: { ...IconMapping },
+      control: {
+        type: 'select',
+        options: Object.keys(IconMapping),
+      },
+    },
+    iconRight: {
+      table: {
+        type: {
+          summary: 'React.ReactNode',
+        },
+      },
+      mapping: { ...IconMapping },
+      control: {
+        type: 'select',
+        options: Object.keys(IconMapping),
+      },
     },
   },
 } as ComponentMeta<typeof Button>
@@ -221,12 +269,12 @@ const AllButtonAssembleTemplate: ComponentStory<typeof Button> = (props) => (
 export const AllOnlyIcons = AllButtonAssembleTemplate.bind({})
 AllOnlyIcons.args = {
   label: '',
-  icon: 'ArchiveIcon',
+  icon: <ArchiveIcon />,
 }
 
 export const AllIcons = AllButtonAssembleTemplate.bind({})
 AllIcons.args = {
-  icon: 'ArchiveIcon',
+  icon: <ArchiveIcon />,
 }
 
 export const AllLoading = AllButtonAssembleTemplate.bind({})
@@ -242,12 +290,12 @@ AllDisabled.args = {
 export const AllDisabledWithOnlyIcon = AllButtonAssembleTemplate.bind({})
 AllDisabledWithOnlyIcon.args = {
   label: '',
-  icon: 'ArchiveIcon',
+  icon: <ArchiveIcon />,
   disabled: true,
 }
 
 export const AllDisabledWithIcon = AllButtonAssembleTemplate.bind({})
 AllDisabledWithIcon.args = {
-  icon: 'ArchiveIcon',
+  icon: <ArchiveIcon />,
   disabled: true,
 }

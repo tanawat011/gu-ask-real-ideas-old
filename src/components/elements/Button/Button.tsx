@@ -1,5 +1,4 @@
-import { MouseEvent } from 'react'
-import * as _AllIcon from '@heroicons/react/solid'
+import { MouseEvent, cloneElement } from 'react'
 
 import {
   BUTTON_STYLE,
@@ -11,17 +10,14 @@ import {
 import { Loading } from '@element/Loader'
 import { clsx } from '@libs'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const AllIcon = require('@heroicons/react/solid')
-
 export type PropButton = {
   width?: number
   label?: string
   size?: SIZE
   color?: COLOR
   buttonStyle?: BUTTON_STYLE
-  icon?: keyof typeof _AllIcon | ''
-  iconRight?: keyof typeof _AllIcon | ''
+  icon?: React.ReactElement
+  iconRight?: React.ReactElement
   iconFit?: boolean
   disabled?: boolean
   loading?: boolean
@@ -92,11 +88,11 @@ export const Button: React.FC<PropButton> = (props) => {
     const _style = buttonStyle.toLowerCase()
 
     if (disabled) {
-      if (buttonStyle === BUTTON_STYLE.LIGHT) {
-        return `btn__${_color}-light-disabled`
+      if (buttonStyle === BUTTON_STYLE.DEFAULT) {
+        return `btn__${_color}-disabled`
       }
 
-      return `btn__${_color}-disabled`
+      return `btn__${_color}-${_style}-disabled`
     }
 
     if (buttonStyle === BUTTON_STYLE.DEFAULT) {
@@ -113,13 +109,18 @@ export const Button: React.FC<PropButton> = (props) => {
     )
   }
 
-  const renderIcon = (_icon: string, position: 'left' | 'right') => {
-    const Icon = AllIcon[_icon as keyof typeof AllIcon]
-
+  const renderIcon = (
+    _icon: React.ReactElement,
+    position: 'left' | 'right',
+  ) => {
     const isLeft = position === 'left'
 
-    const classWidthIcon = label ? 'w-8' : 'w-6'
     let classPaddingIcon = ''
+    let classWidthIcon = label ? 'w-8' : 'w-6'
+
+    if (size === SIZE.XS) {
+      classWidthIcon = label ? 'w-6' : 'w-4'
+    }
 
     if (label) {
       classPaddingIcon = isLeft ? 'pr-2' : 'pl-2'
@@ -132,19 +133,20 @@ export const Button: React.FC<PropButton> = (props) => {
       iconFit && isLeft ? 'left-4' : 'right-4',
     )
 
-    return <Icon className={classIcon} />
+    return cloneElement(_icon, { className: classIcon })
   }
 
-  const renderChild = () =>
-    loading ? (
+  const renderChild = () => {
+    return loading ? (
       <Loading loaderStyle={LOADING_STYLE.DASH} color={LOADING_COLOR.WHITE} />
     ) : (
       <>
-        {icon && <>{renderIcon(icon, 'left')}</>}
+        {icon && renderIcon(icon, 'left')}
         {label}
-        {iconRight && <>{renderIcon(iconRight, 'right')}</>}
+        {iconRight && renderIcon(iconRight, 'right')}
       </>
     )
+  }
 
   return (
     <button

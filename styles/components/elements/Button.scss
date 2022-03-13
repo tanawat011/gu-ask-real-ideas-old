@@ -62,7 +62,7 @@
       }
 
       &-disabled {
-        @apply active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
+        @apply border-solid border-2 border-#{$theme-color}-disabled active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
       }
 
       &-shadow {
@@ -78,7 +78,7 @@
       }
 
       &-disabled {
-        @apply active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
+        @apply border-solid border-2 border-#{$theme-color}-disabled active:bg-#{$theme-color}-disabled hover:bg-#{$theme-color}-disabled disabled:bg-#{$theme-color}-disabled text-nextui-gray-600;
       }
 
       &-shadow {

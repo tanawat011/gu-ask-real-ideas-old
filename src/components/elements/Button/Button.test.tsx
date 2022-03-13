@@ -1,11 +1,8 @@
+import { ArchiveIcon } from '@heroicons/react/solid'
 import { render } from '@testing-library/react'
 
 import { BUTTON_STYLE, COLOR, SIZE } from '@constants'
 import { Button } from '@element/Button'
-
-jest.mock('@heroicons/react/solid', (): unknown => ({
-  ArchiveIcon: (props: never) => <svg {...props} />,
-}))
 
 describe('<Button />', () => {
   beforeEach(() => {
@@ -19,7 +16,7 @@ describe('<Button />', () => {
       <Button
         color={COLOR.PRIMARY}
         size={SIZE.MD}
-        icon='ArchiveIcon'
+        icon={<ArchiveIcon />}
         label='Button A'
         width={100}
         shadow
@@ -96,17 +93,45 @@ describe('<Button />', () => {
   it('should be icon button', async () => {
     expect.assertions(1)
 
-    const { findByRole } = render(<Button label='Test' icon='ArchiveIcon' />)
+    const { findByRole } = render(
+      <Button label='Test' icon={<ArchiveIcon />} />,
+    )
 
     const button = await findByRole('button')
 
     expect(button.children[0].nodeName).toBe('svg')
   })
 
+  it('should be icon button, xs button', async () => {
+    expect.assertions(2)
+
+    const { findByRole } = render(
+      <Button label='Test' icon={<ArchiveIcon />} size={SIZE.XS} />,
+    )
+
+    const button = await findByRole('button')
+
+    expect(button.children[0]).toHaveClass('w-6')
+    expect(button.children[0].nodeName).toBe('svg')
+  })
+
+  it('should be icon button, xs button without label', async () => {
+    expect.assertions(2)
+
+    const { findByRole } = render(
+      <Button icon={<ArchiveIcon />} size={SIZE.XS} />,
+    )
+
+    const button = await findByRole('button')
+
+    expect(button.children[0]).toHaveClass('w-4')
+    expect(button.children[0].nodeName).toBe('svg')
+  })
+
   it('should be icon button without label', async () => {
     expect.assertions(1)
 
-    const { findByRole } = render(<Button icon='ArchiveIcon' />)
+    const { findByRole } = render(<Button icon={<ArchiveIcon />} />)
 
     const button = await findByRole('button')
 
@@ -117,7 +142,7 @@ describe('<Button />', () => {
     expect.assertions(1)
 
     const { findByRole } = render(
-      <Button label='Test' icon='ArchiveIcon' iconFit />,
+      <Button label='Test' icon={<ArchiveIcon />} iconFit />,
     )
 
     const button = await findByRole('button')
@@ -129,7 +154,7 @@ describe('<Button />', () => {
     expect.assertions(1)
 
     const { findByRole } = render(
-      <Button label='Test' iconRight='ArchiveIcon' />,
+      <Button label='Test' iconRight={<ArchiveIcon />} />,
     )
 
     const button = await findByRole('button')
@@ -140,7 +165,7 @@ describe('<Button />', () => {
   it('should be right icon button without label', async () => {
     expect.assertions(1)
 
-    const { findByRole } = render(<Button iconRight='ArchiveIcon' />)
+    const { findByRole } = render(<Button iconRight={<ArchiveIcon />} />)
 
     const button = await findByRole('button')
 
@@ -151,7 +176,7 @@ describe('<Button />', () => {
     expect.assertions(1)
 
     const { findByRole } = render(
-      <Button label='Test' iconRight='ArchiveIcon' iconFit />,
+      <Button label='Test' iconRight={<ArchiveIcon />} iconFit />,
     )
 
     const button = await findByRole('button')
@@ -163,7 +188,11 @@ describe('<Button />', () => {
     expect.assertions(2)
 
     const { findByRole } = render(
-      <Button label='Test' icon='ArchiveIcon' iconRight='ArchiveIcon' />,
+      <Button
+        label='Test'
+        icon={<ArchiveIcon />}
+        iconRight={<ArchiveIcon />}
+      />,
     )
 
     const button = await findByRole('button')
@@ -178,8 +207,8 @@ describe('<Button />', () => {
     const { findByRole } = render(
       <Button
         label='Test'
-        icon='ArchiveIcon'
-        iconRight='ArchiveIcon'
+        icon={<ArchiveIcon />}
+        iconRight={<ArchiveIcon />}
         iconFit
       />,
     )
@@ -194,7 +223,7 @@ describe('<Button />', () => {
     expect.assertions(2)
 
     const { findByRole } = render(
-      <Button icon='ArchiveIcon' iconRight='ArchiveIcon' iconFit />,
+      <Button icon={<ArchiveIcon />} iconRight={<ArchiveIcon />} iconFit />,
     )
 
     const button = await findByRole('button')
@@ -265,8 +294,8 @@ describe('<Button />', () => {
     Object.keys(BUTTON_STYLE).forEach((style) => {
       const _postfixStyle = style === 'DEFAULT' ? '' : `-${style.toLowerCase()}`
       const disabledClass =
-        style === 'LIGHT'
-          ? `btn__${color.toLowerCase()}-light-disabled`
+        style !== 'DEFAULT'
+          ? `btn__${color.toLowerCase()}-${style.toLowerCase()}-disabled`
           : `btn__${color.toLowerCase()}-disabled`
 
       it(`should be ${color.toLowerCase()} button, ${style.toLowerCase()} button`, async () => {
