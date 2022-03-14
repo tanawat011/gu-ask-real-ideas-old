@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react'
 
-import { SIZE, VARIANT } from '@constants'
 import { Button } from '@element/Button'
 import { ButtonGroup } from '@element/ButtonGroup'
 
