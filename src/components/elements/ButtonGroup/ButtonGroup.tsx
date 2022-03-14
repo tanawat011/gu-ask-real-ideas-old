@@ -1,4 +1,4 @@
-import React from 'react'
+import { Children, isValidElement, cloneElement } from 'react'
 
 import { PropButton } from '@element/Button'
 import { clsx } from '@libs'
@@ -11,8 +11,8 @@ export type PropButtonGroup = {
 export const ButtonGroup: React.FC<PropButtonGroup> = (props) => {
   const { vertical, testId } = props
 
-  const children = React.Children.map(props.children, (child) => {
-    if (!React.isValidElement(child)) {
+  const children = Children.map(props.children, (child) => {
+    if (!isValidElement(child)) {
       return child
     }
 
@@ -20,7 +20,7 @@ export const ButtonGroup: React.FC<PropButtonGroup> = (props) => {
 
     delete _props.children
 
-    return React.cloneElement(child, {
+    return cloneElement(child, {
       ..._props,
       ...child.props,
     })
