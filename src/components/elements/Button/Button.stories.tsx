@@ -9,6 +9,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { BUTTON_STYLE, VARIANT, SIZE } from '@constants'
 import { Button } from '@element/Button'
 
+/**
+ * Render class name when tailwind `JIT` mode working
+ * bg-gradient-to-t bg-gradient-to-tr bg-gradient-to-r bg-gradient-to-br bg-gradient-to-b bg-gradient-to-bl bg-gradient-to-l bg-gradient-to-tl
+ */
+
 const ButtonSizeAssembleComponent: React.FC<
   React.ComponentProps<typeof Button>
 > = (props) => {
@@ -180,10 +185,11 @@ const Template: ComponentStory<typeof Button> = (props) => (
 export const DefaultButton = Template.bind({})
 DefaultButton.storyName = 'Default'
 
-export const Gradient = Template.bind({})
-Gradient.args = {
-  gradients: ['primary-default', 'danger-default'],
-}
+// export const Gradient = Template.bind({})
+// Gradient.args = {
+//   gradients: ['from-pink-500', 'via-purple-500', 'to-indigo-500'],
+//   gradientTextColor: 'text-white',
+// }
 
 const ButtonSizeAssembleTemplate: ComponentStory<typeof Button> = (props) => (
   <ButtonSizeAssembleComponent {...props} />

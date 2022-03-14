@@ -8,7 +8,6 @@ import {
   SIZE,
 } from '@constants'
 import { Loading } from '@element/Loader'
-import { RegEx } from '@helpers'
 import { clsx } from '@libs'
 
 export type PropButton = {
@@ -17,6 +16,8 @@ export type PropButton = {
   size?: SIZE
   variant?: VARIANT
   gradients?: [string, string, string] | [string, string] | [string]
+  gradientTextColor?: string
+  gradientDirection?: 't' | 'tr' | 'r' | 'br' | 'b' | 'bl' | 'l' | 'tl'
   btnStyle?: BUTTON_STYLE
   icon?: React.ReactElement
   iconRight?: React.ReactElement
@@ -36,7 +37,9 @@ export const Button: React.FC<PropButton> = (props) => {
     label,
     size = SIZE.MD,
     variant = VARIANT.PRIMARY,
-    gradients,
+    // gradients,
+    // gradientTextColor,
+    // gradientDirection = 'r',
     icon,
     iconRight,
     btnStyle = BUTTON_STYLE.DEFAULT,
@@ -86,6 +89,41 @@ export const Button: React.FC<PropButton> = (props) => {
   const renderAutoWidth = () => wAuto && 'btn__auto-w'
   const renderSize = () => `btn__${size.toLowerCase()}`
 
+  // const renderGradients = () => {
+  //   const _style = btnStyle.toLowerCase()
+
+  //   if (gradients) {
+  //     const gFirst = gradients[0]
+  //     let gSecond = ''
+  //     let gThird = ''
+
+  //     if (gradients.length === 2) {
+  //       gSecond = gradients[1]
+  //     }
+
+  //     if (gradients.length === 3) {
+  //       gSecond = gradients[1]
+  //       gThird = gradients[2]
+  //     }
+
+  // if (btnStyle === BUTTON_STYLE.DEFAULT) {
+  //   return clsx(
+  //     `btn__${_variant}`,
+  //     loading && `btn__${_variant}-loading`,
+  //     shadow && `btn__${_variant}-shadow`,
+  //   )
+  // }
+
+  //     return clsx(
+  //       `bg-gradient-to-${gradientDirection}`,
+  //       gFirst,
+  //       gSecond,
+  //       gThird,
+  //       gradientTextColor,
+  //     )
+  //   }
+  // }
+
   const renderVariant = () => {
     const _variant = variant.toLowerCase()
     const _style = btnStyle.toLowerCase()
@@ -98,30 +136,9 @@ export const Button: React.FC<PropButton> = (props) => {
       return `btn__${_variant}-${_style}-disabled`
     }
 
-    if (gradients) {
-      const gFirst = `from-${
-        RegEx.colorHex.test(gradients[0]) ? `[${gradients[0]}]` : gradients[0]
-      }`
-      let gSecond = ''
-      let gThird = ''
-
-      if (gradients.length === 2) {
-        gSecond = `to-${
-          RegEx.colorHex.test(gradients[1]) ? `[${gradients[1]}]` : gradients[1]
-        }`
-      }
-
-      if (gradients.length === 3) {
-        gSecond = `via-${
-          RegEx.colorHex.test(gradients[1]) ? `[${gradients[1]}]` : gradients[1]
-        }`
-        gThird = `to-${
-          RegEx.colorHex.test(gradients[2]) ? `[${gradients[2]}]` : gradients[2]
-        }`
-      }
-
-      return clsx('bg-gradient-to-r', gFirst, gSecond, gThird)
-    }
+    // if (gradients) {
+    //   return renderGradients()
+    // }
 
     if (btnStyle === BUTTON_STYLE.DEFAULT) {
       return clsx(
